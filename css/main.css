@@ -67,7 +67,7 @@ hr {
 
 img {
     vertical-align: middle;
-    margin-bottom: 3px;
+    margin-bottom: 3px;    
 }
 
 /*
@@ -103,6 +103,13 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+#cbajuda {
+    float: right;    
+    position: relative;
+    top: -40px;
+    margin-right: 5px;
+}
+
 #maindiv, #maindiv2, #maindiv3 {
     overflow: hidden;
     width: 800px;
@@ -116,17 +123,24 @@ textarea {
   float:left;    
   margin: 0 auto;
 }
-#divresults, #divresults2 {  
+#divresults1, #divresults2 {  
   position: absolute;
   margin: 0 0 40px 400px;
-  border: 1px solid black;
-    
-  width: 360px;    
-  text-align: center;
+  border: 1px solid black;    
+  width: 380px;    
+  text-align: left;
+}
+#divresults1_1, #divresults2_1 {
+    margin-left: 10px;
+    float: left;
+}
+#divresults1_2, #divresults2_2 {
+    margin-left: 10px;
+    float: left;
 }
 #ddQuali {
   resize: none;
-  width: 260px;
+  width: 160px;
 }
 
 #rodape {
@@ -159,6 +173,64 @@ hr {
 h1, h2 {
     margin: 5px auto;    
 }
+
+a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+    
+}
+
+a:visited {
+    color: #333333;
+}
+
+a:hover {
+    color: #888888;
+}
+
+#link_header{
+    display: block;
+}
+
+#header {
+    margin: 10px 0 20px 0;
+    text-align: center;
+    background-color: #DDDDDD;
+}
+
+#header_link {
+    border-width: 0 1px 0 1px;
+    border-style: solid;
+    border-color: #888888;
+    width: 150px;
+    display: inline-block;
+    text-align: center;
+    font-size: 18px;
+}
+
+#pcarreira {
+    text-indent: 50px;
+    text-align: justify;
+}
+
+
+#div_botoes {
+    text-align: center;
+    width: 800px; 
+    margin: 0 auto;       
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#div_botoes span {
+    cursor: pointer;
+}
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */

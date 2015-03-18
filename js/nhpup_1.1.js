@@ -23,7 +23,7 @@ nhpup = {
     /*
      Write message, show popup w/ custom width if necessary,
       make sure it disappears on mouseout
-    */
+    */        
     popup: function(p_msg, p_config)
     {
         // do track mouse moves and update position 
@@ -44,7 +44,10 @@ nhpup = {
         }
 
         // Write content and display
-        this.pup.html(p_msg).show();
+        // Alan: Só mostra se checkbox estiver marcado.
+        if (document.getElementById('checkajuda').checked == true) {
+            this.pup.html(p_msg).show();
+        }
 
         // Make sure popup goes away on mouse out and we stop the constant 
         //  positioning on mouse moves.
