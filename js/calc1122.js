@@ -199,7 +199,7 @@ function calcSalario (form) {
     var ftvb = parseFloat(form.ddClasse.value) + parseFloat(form.ddNivel.value) + parseFloat(form.ddProg.value) - 3;   
     var ftcarga = form.ddCargaH.value;    
     var vencimento =  Math.floor(base * (Math.pow(ftstep, ftvb)) * ftcarga * 100) / 100; 
-    var baseurp = Math.round(base * (Math.pow(ftstep, parseFloat(form.ddClasse.value)-1)) * ftcarga * 100) / 100;
+    //var baseurp = Math.round(base * (Math.pow(ftstep, parseFloat(form.ddClasse.value)-1)) * ftcarga * 100) / 100;
     // baseurp no meu contracheque de jan/15 veio sem a progressÃ£o, mas o VB veio com. Se for a regra, usar comentado acima, senÃ£o, apagar baseurp e substituir por vencimento na formula da urp abaixo.
     var alimentacao = 0;
     if (ftcarga == 0.5) {
@@ -210,8 +210,8 @@ function calcSalario (form) {
     var transporte = (form.trans.checked) ? valorTransporte(vencimento, form.gastoTrans.value) : 0;
     var ftinsa = (form.insa.checked) ? 0.1 : 0;
     var ftpg = calcfatorpg(form.ddQuali.value, form.areaquali[0].checked);    
-    var urp = (form.removeurp.checked) ? baseurp*0.2605 : 0;
-    var qualificacao = ftpg*(vencimento+urp)
+    var urp = (form.removeurp.checked) ? vencimento*0.2605*(1+ftpg) : 0;
+    var qualificacao = ftpg*vencimento
     var remuneracao = vencimento + urp + qualificacao +  Math.floor(ftinsa*vencimento*100)/100;   
     var sintfub = (form.sintfub.checked) ? remuneracao*0.01 : 0;
     var saude = (form.saude.checked) ? valorSaude(remuneracao, parseInt(form.ddIdade.value, 10)) : 0;
