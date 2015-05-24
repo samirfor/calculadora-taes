@@ -10,8 +10,8 @@ function updateQuali (form, classs) {
         newoptions = alloptions;
         newvalues = allvalues;
     } else if (classe == 17) {
-        newoptions = alloptions.slice(3, alloptions.length);
-        newvalues = allvalues.slice(3, alloptions.length);
+        newoptions = alloptions.slice(2, alloptions.length);
+        newvalues = allvalues.slice(2, alloptions.length);
         newoptions.splice(0, 1, "Exigência Mínima");
         newvalues.splice(0, 1, 0);
     } else if (classe == 31) {
@@ -36,7 +36,7 @@ function calcfatorpg(i, areadireta) {
     if (areadireta) {
         pesos = Array(0, 0.1, 0.15, 0.2, 0.25, 0.3, 0.52, 0.75)
     } else {
-        pesos = Array(0, 0, 0.1, 0.05, 0.05, 0.2, 0.35, 0.5)
+        pesos = Array(0, 0, 0, 0.1, 0.15, 0.2, 0.35, 0.5)
     }
     return pesos[i];
 }
@@ -252,14 +252,22 @@ function calcSalario (form) {
      var form1 = document.forms["myform"]
      var form2 = document.forms["myform2"]     
      
-     if (tipo=="inverter"){                   
+     if (tipo=="inverter"){ 
+         
     var values1 = Array(form1.ddClasse.value, form1.ddProg.value, form1.ddFG.value, form1.ddNivel.value, form1.ddCargaH.value, form1.ddAno.value, form1.ddQuali.value, form1.saude.checked, form1.ddIdade.value, form1.removeurp.checked, form1.trans.checked, form1.gastoTrans.value, form1.alim.checked, form1.insa.checked, form1.creche.checked, form1.sintfub.checked, form1.areaquali[0].checked, form1.areaquali[1].checked);
+         
     var values2 = Array(form2.ddClasse.value, form2.ddProg.value, form2.ddFG.value, form2.ddNivel.value, form2.ddCargaH.value, form2.ddAno.value, form2.ddQuali.value, form2.saude.checked, form2.ddIdade.value, form2.removeurp.checked, form2.trans.checked, form2.gastoTrans.value, form2.alim.checked, form2.insa.checked, form2.creche.checked, form2.sintfub.checked, form2.areaquali[0].checked, form2.areaquali[1].checked);
+         
      } else if (tipo=="cima") {
+         
     var values2 = Array(form2.ddClasse.value, form2.ddProg.value, form2.ddFG.value, form2.ddNivel.value, form2.ddCargaH.value, form2.ddAno.value, form2.ddQuali.value, form2.saude.checked, form2.ddIdade.value, form2.removeurp.checked, form2.trans.checked, form2.gastoTrans.value, form2.alim.checked, form2.insa.checked, form2.creche.checked, form2.sintfub.checked, form2.areaquali[0].checked, form2.areaquali[1].checked);
+         
     var values1 = values2;
+         
      } else {
+         
     var values1 = Array(form1.ddClasse.value, form1.ddProg.value, form1.ddFG.value, form1.ddNivel.value, form1.ddCargaH.value, form1.ddAno.value, form1.ddQuali.value, form1.saude.checked, form1.ddIdade.value, form1.removeurp.checked, form1.trans.checked, form1.gastoTrans.value, form1.alim.checked, form1.insa.checked, form1.creche.checked, form1.sintfub.checked, form1.areaquali[0].checked, form1.areaquali[1].checked);
+         
     var values2 = values1 ;        
      }
     
@@ -269,7 +277,7 @@ function calcSalario (form) {
     form1.ddNivel.value = values2[3]
     form1.ddCargaH.value = values2[4]
     form1.ddAno.value = values2[5]
-    form1.ddQuali.value = values2[6]
+    
     form1.saude.checked = values2[7]
     form1.ddIdade.value = values2[8]
     form1.removeurp.checked = values2[9]
@@ -288,7 +296,7 @@ function calcSalario (form) {
     form2.ddNivel.value = values1[3]
     form2.ddCargaH.value = values1[4]
     form2.ddAno.value = values1[5]
-    form2.ddQuali.value = values1[6]
+    
     form2.saude.checked = values1[7]
     form2.ddIdade.value = values1[8]
     form2.removeurp.checked = values1[9]
@@ -300,6 +308,12 @@ function calcSalario (form) {
     form2.sintfub.checked = values1[15]
     form2.areaquali[0].checked = values1[16]
     form2.areaquali[1].checked = values1[17]
+    
+    updateQuali(form1, values2[0])
+    updateQuali(form2, values1[0])
+    
+    form1.ddQuali.value = values2[6]
+    form2.ddQuali.value = values1[6]
     
     calcSalario(form1)
     calcSalario(form2)
