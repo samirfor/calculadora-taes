@@ -2,46 +2,47 @@
 <!--[if lt IE 7]>
     <html class="no-js lt-ie9 lt-ie8 lt-ie7">
     <![endif]-->
-    <!--[if IE 7]>
+<!--[if IE 7]>
         <html class="no-js lt-ie9 lt-ie8">
         <![endif]-->
-        <!--[if IE 8]>
+<!--[if IE 8]>
             <html class="no-js lt-ie9">
             <![endif]-->
-            <!--[if gt IE 8]>
+<!--[if gt IE 8]>
                 <!-->
-                <html class="no-js">
-                <!--<![endif]-->
-                
-                <head>
-                    <meta charset="utf-8">
-                    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">                    
-                    <title>
-                        Salário UnB
-                    </title>
-                    <meta name="description" content="">
-                    <meta name="viewport" content="width=device-width">
-                    <link rel="shortcut icon" href="favicon.ico">
-                    <link rel="stylesheet" href="css/normalize.css">
-                    <link rel="stylesheet" href="css/main.css">
-                    <script src="js/vendor/modernizr-2.6.2.min.js">
-                    </script>
-                    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js">
-                    </script>
-                    <script>                                                                                                                                    window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')
-                    </script>
-                    <script src="js/plugins.js">
-                    </script>
-                    <script src="js/main.js">
-                    </script>
-                    <script src="js/calc1122.js">
-                    </script>
-                    <script type="text/javascript" src="js/nhpup_1.1.js">
-                    </script>
-                </head>
-                
-                <body onLoad="firstload();">
-                    <!--[if lt IE 7]>
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>
+        Salário UnB
+    </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr-2.6.2.min.js">
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js">
+    </script>
+    <script>
+        window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')
+    </script>
+    <script src="js/plugins.js">
+    </script>
+    <script src="js/main.js">
+    </script>
+    <script src="js/calc1122.js">
+    </script>
+    <script type="text/javascript" src="js/nhpup_1.1.js">
+    </script>
+</head>
+
+<body onLoad="firstload();">
+    <!--[if lt IE 7]>
                         <p class="chromeframe">
                             You are using an
                             <strong>
@@ -54,36 +55,36 @@
                             to improve your experience.
                         </p>
                     <![endif]-->
-                    <div id="maindiv">
-                        <H1>
+    <div id="maindiv">
+        <H1>
                             Calculadora de Salário dos Servidores T-A da UnB
                         </H1>
-                        <hr>
-                        <div id="header">
-                            <div id="header_link">
-                                <a id="link_header" href="index.html">Calculadora</a>
-                            </div>
-                            <div id="header_link">
-                                <a id="link_header" href="carreira.html">Carreira</a>
-                            </div>
-                            <div id="header_link">
-                                <a id="link_header" href="sobre.html">Sobre</a>
-                            </div>
-                        </div>
-                        <h1>
+        <hr>
+        <div id="header">
+            <div id="header_link">
+                <a id="link_header" href="index.html">Calculadora</a>
+            </div>
+            <div id="header_link">
+                <a id="link_header" href="carreira.html">Carreira</a>
+            </div>
+            <div id="header_link">
+                <a id="link_header" href="sobre.html">Sobre</a>
+            </div>
+        </div>
+        <h1>
                             Calculadora
-                        </h1>                        
-                        <hr>
-                        <h2>
+                        </h1>
+        <hr>
+        <h2>
                             Simulação 1
                         </h2>
-                        <div id="cbajuda">
-                                <input type="checkbox" name="ajuda" id="checkajuda" value="Ajuda"> Mostrar ajuda
-                            </div>
-                        <div id="divdata">                            
-                            <FORM NAME="myform" ACTION="" METHOD="GET">
-                                <p>
-                                    <span onmouseover="nhpup.popup('A classe é definida pela exigência de escolaridade do cargo.');">
+        <div id="cbajuda">
+            <input type="checkbox" name="ajuda" id="checkajuda" value="Ajuda"> Mostrar ajuda
+        </div>
+        <div id="divdata">
+            <FORM NAME="myform" ACTION="" METHOD="GET">
+                <p>
+                    <span onmouseover="nhpup.popup('A classe é definida pela exigência de escolaridade do cargo.');">
                                         Classe:
                                         <select name="ddClasse" id="ddClasse" onClick="updateQuali(this.form, this.form.ddClasse.value);"
                                         onKeyDown="updateQuali(this.form, this.form.ddClasse.value);" onKeyPress="updateQuali(this.form, this.form.ddClasse.value);"
@@ -105,7 +106,7 @@
                                             </option>
                                         </select>
                                     </span>
-                                    <span style="padding-left: 25px;" onmouseover="nhpup.popup('A Progressão por capacitação profissional varia em 4 níveis e pode ser obtida pela realização de cursos.');">
+                    <span style="padding-left: 25px;" onmouseover="nhpup.popup('A Progressão por capacitação profissional varia em 4 níveis e pode ser obtida pela realização de cursos.');">
                                         Nível:
                                         <select name="ddProg" id="ddProg" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
                                         onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
@@ -123,7 +124,7 @@
                                             </option>
                                         </select>
                                     </span>
-                                    <span style="padding-left: 25px;">
+                    <span style="padding-left: 25px;">
                                         FG:
                                         <select name="ddFG" id="ddFG" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
                                         onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
@@ -159,8 +160,8 @@
                                             </option>
                                         </select>
                                     </span>
-                                    <br>
-                                    <span onmouseover="nhpup.popup('A Progressão por mérito profissional é relativa ao tempo do servidor no cargo, podendo ser avançada a cada 18 meses.');">
+                    <br>
+                    <span onmouseover="nhpup.popup('A Progressão por mérito profissional é relativa ao tempo do servidor no cargo, podendo ser avançada a cada 18 meses.');">
                                         Progressão:                                        
                                         <select name="ddNivel" id="ddNivel" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
                                             <option value="1" selected>
@@ -212,22 +213,20 @@
                                                 16
                                             </option>
                                         </select>
-                                    </span>
-                                    Carga Horária:
-                                    <select name="ddCargaH" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
-                                    onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
-                                        <option value="1" selected>
-                                            40 horas
-                                        </option>
-                                        <option value="0.75">
-                                            30 horas
-                                        </option>
-                                        <option value="0.5">
-                                            20 horas
-                                        </option>
-                                    </select>
-                                    <br>
-                                    <span onmouseover="nhpup.popup('Os Servidores Técnico-Administrativos conseguiram uma série de aumentos após a greve de 2012, que ocorrerão nos períodos abaixo.');">
+                                    </span> Carga Horária:
+                    <select name="ddCargaH" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
+                        <option value="1" selected>
+                            40 horas
+                        </option>
+                        <option value="0.75">
+                            30 horas
+                        </option>
+                        <option value="0.5">
+                            20 horas
+                        </option>
+                    </select>
+                    <br>
+                    <span onmouseover="nhpup.popup('Os Servidores Técnico-Administrativos conseguiram uma série de aumentos após a greve de 2012, que ocorrerão nos períodos abaixo.');">
                                         Período:                                        
                                         <select name="ddAno" id="ddAno" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
                                         onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
@@ -248,47 +247,45 @@
                                             </option>
                                         </select>
                                     </span>
-                                    <span onmouseover="nhpup.popup('Os médicos e veterinários possuem matriz salarial diferente no PCCTAE. Nota: Apenas os valores de 2015 para 40 horas semanais estão configurados apropriadamente.');">
+                    <span onmouseover="nhpup.popup('Os médicos e veterinários possuem matriz salarial diferente no PCCTAE. Nota: Apenas os valores de 2015 para 40 horas semanais estão configurados apropriadamente.');">
                                         <input type="checkbox" name="medico" value="medico" onClick="calcSalario(this.form)">
                                         Médico/Vet.                                        
                                     </span>
-                                    <br>
-                                    Qualificação:
-                                    <select name="ddQuali" id="ddQuali" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
-                                    onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
-                                        <option value="0" selected>
-                                            Nenhuma
-                                        </option>
-                                        <option value="0.1">
-                                            Fundamental Completo
-                                        </option>
-                                        <option value="0.15">
-                                            Médio Completo
-                                        </option>
-                                        <option value="0.2">
-                                            Médio Técnico
-                                        </option>
-                                        <option value="0.25">
-                                            Graduação Completa
-                                        </option>
-                                        <option value="0.30">
-                                            Especialização
-                                        </option>
-                                        <option value="0.52">
-                                            Mestrado
-                                        </option>
-                                        <option value="0.75">
-                                            Doutorado
-                                        </option>
-                                    </select>
-                                    <span onmouseover="nhpup.popup('O valor do incentivo à qualificação depende se os estudos foram em área diretamente relacionada ao cargo ou não.');">
+                    <br> Qualificação:
+                    <select name="ddQuali" id="ddQuali" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
+                        <option value="0" selected>
+                            Nenhuma
+                        </option>
+                        <option value="0.1">
+                            Fundamental Completo
+                        </option>
+                        <option value="0.15">
+                            Médio Completo
+                        </option>
+                        <option value="0.2">
+                            Médio Técnico
+                        </option>
+                        <option value="0.25">
+                            Graduação Completa
+                        </option>
+                        <option value="0.30">
+                            Especialização
+                        </option>
+                        <option value="0.52">
+                            Mestrado
+                        </option>
+                        <option value="0.75">
+                            Doutorado
+                        </option>
+                    </select>
+                    <span onmouseover="nhpup.popup('O valor do incentivo à qualificação depende se os estudos foram em área diretamente relacionada ao cargo ou não.');">
                                         <input type="radio" name="areaquali" value="qualid" onClick="calcSalario(this.form)" checked>
                                         Direta 
                                         <input type="radio" name="areaquali" value="qualii" onClick="calcSalario(this.form)">
                                         Indireta
                                     </span>
-                                    <br>
-                                    <span onmouseover="nhpup.popup('O reembolso por contrato de Plano de Saúde particular segue uma tabela definida pelo Governo Federal e depende do salário bruto e da idade do servidor.');">
+                    <br>
+                    <span onmouseover="nhpup.popup('O reembolso por contrato de Plano de Saúde particular segue uma tabela definida pelo Governo Federal e depende do salário bruto e da idade do servidor.');">
                                         <input type="checkbox" name="saude" value="Saude" onClick="calcSalario(this.form)">
                                         Saúde - Idade:                                        
                                         <select name="ddIdade" id="ddIdade" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
@@ -326,13 +323,13 @@
                                         </select>                                    
                                         <INPUT TYPE="text" NAME="txSaude" VALUE="0" readonly>
                                     </span>
-                                    <span onmouseover="nhpup.popup('A URP está prestes a ser julgada no STF, e a tendência é que seja removida dos servidores. Desmarque esta opção para ver como o salário ficaria sem este adicional. Veja o menu Carreira para mais informações.');">
+                    <span onmouseover="nhpup.popup('A URP está prestes a ser julgada no STF, e a tendência é que seja removida dos servidores. Desmarque esta opção para ver como o salário ficaria sem este adicional. Veja o menu Carreira para mais informações.');">
                                         <input type="checkbox" name="removeurp" value="removeURP" onClick="calcSalario(this.form)"
                                         checked>
                                         URP
                                     </span>
-                                    <br>
-                                    <span onmouseover="nhpup.popup('O valor do transporte é calculado com base no gasto diário do servidor (arredondado para cima em steps de R$ 0,2). Caso receba auxílio-alimentação, valores referentes a saída para almoço não devem ser considerados. Além disso, o valor sofre um desconto de 6% do vencimento proporcional a 22 dias.');">
+                    <br>
+                    <span onmouseover="nhpup.popup('O valor do transporte é calculado com base no gasto diário do servidor (arredondado para cima em steps de R$ 0,2). Caso receba auxílio-alimentação, valores referentes a saída para almoço não devem ser considerados. Além disso, o valor sofre um desconto de 6% do vencimento proporcional a 22 dias.');">
                                     <input type="checkbox" name="trans" value="Trans" onClick="calcSalario(this.form)">
                                     Transporte - Gasto Diário: R$
                                     <input type="number" name="gastoTrans" min="2" max="20" step="0.2" value="6"
@@ -340,87 +337,82 @@
                                     onKeyUp="validateGD2(this.form);">
                                     <INPUT TYPE="text" name="txTrans" id="txTrans" value="0" readonly>
                                     </span>
-                                        <br>
-                                    <input type="checkbox" name="alim" value="Alim" onClick="calcSalario(this.form)"
-                                    checked>
-                                    Alimentação:
-                                    <INPUT TYPE="text" name="txAlim" id="txAlim" value="R$ 373,00" readonly>
-                                    <input type="checkbox" name="insa" value="Insa" onClick="calcSalario(this.form)">
-                                    Insalubridade:
-                                    <INPUT TYPE="text" NAME="txInsa" VALUE="0" readonly>
-                                    <br>
-                                    <input type="checkbox" name="creche" value="0" onClick="calcSalario(this.form)">
-                                    Auxílio Creche:
-                                    <INPUT TYPE="text" NAME="txCreche" VALUE="0" readonly>
-                                    <input type="checkbox" name="sintfub" value="" onClick="calcSalario(this.form)">
-                                    Sintfub:
-                                    <INPUT TYPE="text" NAME="txsintfub" VALUE="R$ 0,00" readonly>
-                                    <br>
-                                </p>
-                        </div>
-                        <div id="divresults1">
-                            <div id="divresults1_1">
-                                <p>
-                                    Vencimento:
-                                    <INPUT TYPE="text" NAME="txVB" VALUE="0" readonly>
-                                </p>
-                                <p>
-                                    Bruto:
-                                    <INPUT TYPE="text" NAME="txBruto" VALUE="0" readonly>
-                                </p>
-                                <p>
-                                    PSS:
-                                    <INPUT TYPE="text" NAME="txInss" VALUE="0" readonly>
-                                </p>
-                                <p>
-                                    IRRF:
-                                    <INPUT TYPE="text" NAME="txIrrf" VALUE="0" readonly>
-                                </p>
-                                <p>
-                                    Líquido:
-                                    <INPUT TYPE="text" NAME="txResult" VALUE="0" readonly>
-                                </p>
-                            </div>
-                            <div id="divresults1_2">
-                                <p onmouseover="nhpup.popup('Valor recebido pelo incentivo à qualificação (graudação, especialização, pós-graduação)');">
-                                    Incentivo:
-                                    <INPUT TYPE="text" NAME="txQualif" VALUE="0" readonly>
-                                </p>
-                                <p>
-                                    URP:
-                                    <INPUT TYPE="text" NAME="txURP" VALUE="0" readonly>
-                                    <p>
-                                        Base PSS:
-                                        <INPUT TYPE="text" NAME="txbINSS" VALUE="0" readonly>
-                                    </p>
-                                    <p>
-                                        Base IRRF:
-                                        <INPUT TYPE="text" NAME="txbIRRF" VALUE="0" readonly>
-                                    </p>
-                                    <p>
-                                        Desconto:
-                                        <INPUT TYPE="text" NAME="txdesconto" VALUE="0" readonly>
-                                    </p>
-                            </div>
-                        </div>
-                        </FORM>
-                    </div>
-                    <hr>
-                        <div id="div_botoes">
-                              <p style="margin: auto;">
-                                  <span style="margin: 0 30px;" onclick="inverterform('baixo')"><img src="img/setabaixo.jpg" style="width: 18px; height: 18px;">Copiar para baixo </span><span style="margin: 0 30px;" onclick="inverterform('cima')"><img src="img/setacima.jpg" style="width: 18px; height: 18px;">Copiar para cima </span><span style="margin: 0 30px;" onClick="inverterform('inverter')"> <img src="img/setainv.jpg" style="width: 36px; height: 18px;">Inveter</span>
-                               </p>  
-                        </div>
-                        
-                    <hr>           
-                    <div id="maindiv2">
-                        <h2>
+                    <br>
+                    <input type="checkbox" name="alim" value="Alim" onClick="calcSalario(this.form)" checked> Alimentação:
+                    <INPUT TYPE="text" name="txAlim" id="txAlim" value="R$ 373,00" readonly>
+                    <input type="checkbox" name="insa" value="Insa" onClick="calcSalario(this.form)"> Insalubridade:
+                    <INPUT TYPE="text" NAME="txInsa" VALUE="0" readonly>
+                    <br>
+                    <input type="checkbox" name="creche" value="0" onClick="calcSalario(this.form)"> Auxílio Creche:
+                    <INPUT TYPE="text" NAME="txCreche" VALUE="0" readonly>
+                    <input type="checkbox" name="sintfub" value="" onClick="calcSalario(this.form)"> Sintfub:
+                    <INPUT TYPE="text" NAME="txsintfub" VALUE="R$ 0,00" readonly>
+                    <br>
+                </p>
+        </div>
+        <div id="divresults1">
+            <div id="divresults1_1">
+                <p>
+                    Vencimento:
+                    <INPUT TYPE="text" NAME="txVB" VALUE="0" readonly>
+                </p>
+                <p>
+                    Bruto:
+                    <INPUT TYPE="text" NAME="txBruto" VALUE="0" readonly>
+                </p>
+                <p>
+                    PSS:
+                    <INPUT TYPE="text" NAME="txInss" VALUE="0" readonly>
+                </p>
+                <p>
+                    IRRF:
+                    <INPUT TYPE="text" NAME="txIrrf" VALUE="0" readonly>
+                </p>
+                <p>
+                    Líquido:
+                    <INPUT TYPE="text" NAME="txResult" VALUE="0" readonly>
+                </p>
+            </div>
+            <div id="divresults1_2">
+                <p onmouseover="nhpup.popup('Valor recebido pelo incentivo à qualificação (graudação, especialização, pós-graduação)');">
+                    Incentivo:
+                    <INPUT TYPE="text" NAME="txQualif" VALUE="0" readonly>
+                </p>
+                <p>
+                    URP:
+                    <INPUT TYPE="text" NAME="txURP" VALUE="0" readonly>
+                    <p>
+                        Base PSS:
+                        <INPUT TYPE="text" NAME="txbINSS" VALUE="0" readonly>
+                    </p>
+                    <p>
+                        Base IRRF:
+                        <INPUT TYPE="text" NAME="txbIRRF" VALUE="0" readonly>
+                    </p>
+                    <p>
+                        Desconto:
+                        <INPUT TYPE="text" NAME="txdesconto" VALUE="0" readonly>
+                    </p>
+            </div>
+        </div>
+        </FORM>
+    </div>
+    <hr>
+    <div id="div_botoes">
+        <p style="margin: auto;">
+            <span style="margin: 0 30px;" onclick="inverterform('baixo')"><img src="img/setabaixo.jpg" style="width: 18px; height: 18px;">Copiar para baixo </span><span style="margin: 0 30px;" onclick="inverterform('cima')"><img src="img/setacima.jpg" style="width: 18px; height: 18px;">Copiar para cima </span><span style="margin: 0 30px;" onClick="inverterform('inverter')"> <img src="img/setainv.jpg" style="width: 36px; height: 18px;">Inveter</span>
+        </p>
+    </div>
+
+    <hr>
+    <div id="maindiv2">
+        <h2>
                             Simulação 2
                         </h2>
-                        <div id="divdata2">
-                            <FORM NAME="myform2" ACTION="" METHOD="GET">
-                                <p>
-                                    <span onmouseover="nhpup.popup('A classe é definida pela exigência de escolaridade do cargo.');">
+        <div id="divdata2">
+            <FORM NAME="myform2" ACTION="" METHOD="GET">
+                <p>
+                    <span onmouseover="nhpup.popup('A classe é definida pela exigência de escolaridade do cargo.');">
                                         Classe:
                                         <select name="ddClasse" id="ddClasse" onClick="updateQuali(this.form, this.form.ddClasse.value);"
                                         onKeyDown="updateQuali(this.form, this.form.ddClasse.value);" onKeyPress="updateQuali(this.form, this.form.ddClasse.value);"
@@ -442,7 +434,7 @@
                                             </option>
                                         </select>
                                     </span>
-                                    <span style="padding-left: 25px;" onmouseover="nhpup.popup('A Progressão por capacitação profissional varia em 4 níveis e pode ser obtida pela realização de cursos.');">
+                    <span style="padding-left: 25px;" onmouseover="nhpup.popup('A Progressão por capacitação profissional varia em 4 níveis e pode ser obtida pela realização de cursos.');">
                                         Nível:
                                         <select name="ddProg" id="ddProg" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
                                         onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
@@ -460,7 +452,7 @@
                                             </option>
                                         </select>
                                     </span>
-                                    <span style="padding-left: 25px;">
+                    <span style="padding-left: 25px;">
                                         FG:
                                         <select name="ddFG" id="ddFG" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
                                         onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
@@ -496,8 +488,8 @@
                                             </option>
                                         </select>
                                     </span>
-                                    <br>
-                                    <span onmouseover="nhpup.popup('A Progressão por mérito profissional é relativa ao tempo do servidor no cargo, podendo ser avançada a cada 18 meses.');">
+                    <br>
+                    <span onmouseover="nhpup.popup('A Progressão por mérito profissional é relativa ao tempo do servidor no cargo, podendo ser avançada a cada 18 meses.');">
                                         Progressão:                                        
                                         <select name="ddNivel" id="ddNivel" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
                                             <option value="1" selected>
@@ -549,22 +541,20 @@
                                                 16
                                             </option>
                                         </select>
-                                    </span>
-                                    Carga Horária:
-                                    <select name="ddCargaH" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
-                                    onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
-                                        <option value="1" selected>
-                                            40 horas
-                                        </option>
-                                        <option value="0.75">
-                                            30 horas
-                                        </option>
-                                        <option value="0.5">
-                                            20 horas
-                                        </option>
-                                    </select>
-                                    <br>
-                                    <span onmouseover="nhpup.popup('Os Servidores Técnico-Administrativos conseguiram uma série de aumentos após a greve de 2012, que ocorrerão nos períodos abaixo.');">
+                                    </span> Carga Horária:
+                    <select name="ddCargaH" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
+                        <option value="1" selected>
+                            40 horas
+                        </option>
+                        <option value="0.75">
+                            30 horas
+                        </option>
+                        <option value="0.5">
+                            20 horas
+                        </option>
+                    </select>
+                    <br>
+                    <span onmouseover="nhpup.popup('Os Servidores Técnico-Administrativos conseguiram uma série de aumentos após a greve de 2012, que ocorrerão nos períodos abaixo.');">
                                         Período:                                        
                                         <select name="ddAno" id="ddAno" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
                                         onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
@@ -585,47 +575,45 @@
                                             </option>
                                         </select>
                                     </span>
-                                    <span onmouseover="nhpup.popup('Os médicos e veterinários possuem matriz salarial diferente no PCCTAE. Nota: Apenas os valores de 2015 para 40 horas semanais estão configurados apropriadamente.');">
+                    <span onmouseover="nhpup.popup('Os médicos e veterinários possuem matriz salarial diferente no PCCTAE. Nota: Apenas os valores de 2015 para 40 horas semanais estão configurados apropriadamente.');">
                                         <input type="checkbox" name="medico" value="medico" onClick="calcSalario(this.form)">
                                         Médico/Vet.                                        
                                     </span>
-                                    <br>
-                                    Qualificação:
-                                    <select name="ddQuali" id="ddQuali" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
-                                    onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
-                                        <option value="0" selected>
-                                            Nenhuma
-                                        </option>
-                                        <option value="0.1">
-                                            Fundamental Completo
-                                        </option>
-                                        <option value="0.15">
-                                            Médio Completo
-                                        </option>
-                                        <option value="0.2">
-                                            Médio Técnico
-                                        </option>
-                                        <option value="0.25">
-                                            Graduação Completa
-                                        </option>
-                                        <option value="0.30">
-                                            Especialização
-                                        </option>
-                                        <option value="0.52">
-                                            Mestrado
-                                        </option>
-                                        <option value="0.75">
-                                            Doutorado
-                                        </option>
-                                    </select>
-                                    <span onmouseover="nhpup.popup('O valor do incentivo à qualificação depende se os estudos foram em área diretamente relacionada ao cargo ou não.');">
+                    <br> Qualificação:
+                    <select name="ddQuali" id="ddQuali" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
+                        <option value="0" selected>
+                            Nenhuma
+                        </option>
+                        <option value="0.1">
+                            Fundamental Completo
+                        </option>
+                        <option value="0.15">
+                            Médio Completo
+                        </option>
+                        <option value="0.2">
+                            Médio Técnico
+                        </option>
+                        <option value="0.25">
+                            Graduação Completa
+                        </option>
+                        <option value="0.30">
+                            Especialização
+                        </option>
+                        <option value="0.52">
+                            Mestrado
+                        </option>
+                        <option value="0.75">
+                            Doutorado
+                        </option>
+                    </select>
+                    <span onmouseover="nhpup.popup('O valor do incentivo à qualificação depende se os estudos foram em área diretamente relacionada ao cargo ou não.');">
                                         <input type="radio" name="areaquali" value="qualid" onClick="calcSalario(this.form)" checked>
                                         Direta 
                                         <input type="radio" name="areaquali" value="qualii" onClick="calcSalario(this.form)">
                                         Indireta
                                     </span>
-                                    <br>
-                                    <span onmouseover="nhpup.popup('O reembolso por contrato de Plano de Saúde particular segue uma tabela definida pelo Governo Federal e depende do salário bruto e da idade do servidor.');">
+                    <br>
+                    <span onmouseover="nhpup.popup('O reembolso por contrato de Plano de Saúde particular segue uma tabela definida pelo Governo Federal e depende do salário bruto e da idade do servidor.');">
                                         <input type="checkbox" name="saude" value="Saude" onClick="calcSalario(this.form)">
                                         Saúde - Idade:                                        
                                         <select name="ddIdade" id="ddIdade" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
@@ -663,13 +651,13 @@
                                         </select>                                    
                                         <INPUT TYPE="text" NAME="txSaude" VALUE="0" readonly>
                                     </span>
-                                    <span onmouseover="nhpup.popup('A URP está prestes a ser julgada no STF, e a tendência é que seja removida dos servidores. Desmarque esta opção para ver como o salário ficaria sem este adicional. Veja o menu Carreira para mais informações.');">
+                    <span onmouseover="nhpup.popup('A URP está prestes a ser julgada no STF, e a tendência é que seja removida dos servidores. Desmarque esta opção para ver como o salário ficaria sem este adicional. Veja o menu Carreira para mais informações.');">
                                         <input type="checkbox" name="removeurp" value="removeURP" onClick="calcSalario(this.form)"
                                         checked>
                                         URP
                                     </span>
-                                    <br>
-                                    <span onmouseover="nhpup.popup('O valor do transporte é calculado com base no gasto diário do servidor (arredondado para cima em steps de R$ 0,2). Caso receba auxílio-alimentação, valores referentes a saída para almoço não devem ser considerados. Além disso, o valor sofre um desconto de 6% do vencimento proporcional a 22 dias.');">
+                    <br>
+                    <span onmouseover="nhpup.popup('O valor do transporte é calculado com base no gasto diário do servidor (arredondado para cima em steps de R$ 0,2). Caso receba auxílio-alimentação, valores referentes a saída para almoço não devem ser considerados. Além disso, o valor sofre um desconto de 6% do vencimento proporcional a 22 dias.');">
                                     <input type="checkbox" name="trans" value="Trans" onClick="calcSalario(this.form)">
                                     Transporte - Gasto Diário: R$
                                     <input type="number" name="gastoTrans" min="2" max="20" step="0.2" value="6"
@@ -677,128 +665,112 @@
                                     onKeyUp="validateGD2(this.form);">
                                     <INPUT TYPE="text" name="txTrans" id="txTrans" value="0" readonly>
                                     </span>
-                                        <br>
-                                    <input type="checkbox" name="alim" value="Alim" onClick="calcSalario(this.form)"
-                                    checked>
-                                    Alimentação:
-                                    <INPUT TYPE="text" name="txAlim" id="txAlim" value="R$ 373,00" readonly>
-                                    <input type="checkbox" name="insa" value="Insa" onClick="calcSalario(this.form)">
-                                    Insalubridade:
-                                    <INPUT TYPE="text" NAME="txInsa" VALUE="0" readonly>
-                                    <br>
-                                    <input type="checkbox" name="creche" value="0" onClick="calcSalario(this.form)">
-                                    Auxílio Creche:
-                                    <INPUT TYPE="text" NAME="txCreche" VALUE="0" readonly>
-                                    <input type="checkbox" name="sintfub" value="" onClick="calcSalario(this.form)">
-                                    Sintfub:
-                                    <INPUT TYPE="text" NAME="txsintfub" VALUE="R$ 0,00" readonly>
-                                    <br>
-                                </p>
-                        </div>
-                        <div id="divresults2">
-                            <div id="divresults2_1">
-                                <p>
-                                    Vencimento:
-                                    <INPUT TYPE="text" NAME="txVB" VALUE="0" readonly>
-                                </p>
-                                <p>
-                                    Bruto:
-                                    <INPUT TYPE="text" NAME="txBruto" VALUE="0" readonly>
-                                </p>
-                                <p>
-                                    PSS:
-                                    <INPUT TYPE="text" NAME="txInss" VALUE="0" readonly>
-                                </p>
-                                <p>
-                                    IRRF:
-                                    <INPUT TYPE="text" NAME="txIrrf" VALUE="0" readonly>
-                                </p>
-                                <p>
-                                    Líquido:
-                                    <INPUT TYPE="text" NAME="txResult" VALUE="0" readonly>
-                                </p>
-                            </div>
-                            <div id="divresults1_2">
-                                <p onmouseover="nhpup.popup('Valor recebido pelo incentivo à qualificação (graudação, especialização, pós-graduação)');">
-                                    Incentivo:
-                                    <INPUT TYPE="text" NAME="txQualif" VALUE="0" readonly>
-                                </p>
-                                <p>
-                                    URP:
-                                    <INPUT TYPE="text" NAME="txURP" VALUE="0" readonly>
-                                    <p>
-                                        Base PSS:
-                                        <INPUT TYPE="text" NAME="txbINSS" VALUE="0" readonly>
-                                    </p>
-                                    <p>
-                                        Base IRRF:
-                                        <INPUT TYPE="text" NAME="txbIRRF" VALUE="0" readonly>
-                                    </p>
-                                    <p>
-                                        Desconto:
-                                        <INPUT TYPE="text" NAME="txdesconto" VALUE="0" readonly>
-                                    </p>
-                            </div>
-                        </div>
-                        </FORM>
-                    </div>
-                    <hr>
-                    <div id="maindiv3">
-                        <h2>
+                    <br>
+                    <input type="checkbox" name="alim" value="Alim" onClick="calcSalario(this.form)" checked> Alimentação:
+                    <INPUT TYPE="text" name="txAlim" id="txAlim" value="R$ 373,00" readonly>
+                    <input type="checkbox" name="insa" value="Insa" onClick="calcSalario(this.form)"> Insalubridade:
+                    <INPUT TYPE="text" NAME="txInsa" VALUE="0" readonly>
+                    <br>
+                    <input type="checkbox" name="creche" value="0" onClick="calcSalario(this.form)"> Auxílio Creche:
+                    <INPUT TYPE="text" NAME="txCreche" VALUE="0" readonly>
+                    <input type="checkbox" name="sintfub" value="" onClick="calcSalario(this.form)"> Sintfub:
+                    <INPUT TYPE="text" NAME="txsintfub" VALUE="R$ 0,00" readonly>
+                    <br>
+                </p>
+        </div>
+        <div id="divresults2">
+            <div id="divresults2_1">
+                <p>
+                    Vencimento:
+                    <INPUT TYPE="text" NAME="txVB" VALUE="0" readonly>
+                </p>
+                <p>
+                    Bruto:
+                    <INPUT TYPE="text" NAME="txBruto" VALUE="0" readonly>
+                </p>
+                <p>
+                    PSS:
+                    <INPUT TYPE="text" NAME="txInss" VALUE="0" readonly>
+                </p>
+                <p>
+                    IRRF:
+                    <INPUT TYPE="text" NAME="txIrrf" VALUE="0" readonly>
+                </p>
+                <p>
+                    Líquido:
+                    <INPUT TYPE="text" NAME="txResult" VALUE="0" readonly>
+                </p>
+            </div>
+            <div id="divresults1_2">
+                <p onmouseover="nhpup.popup('Valor recebido pelo incentivo à qualificação (graudação, especialização, pós-graduação)');">
+                    Incentivo:
+                    <INPUT TYPE="text" NAME="txQualif" VALUE="0" readonly>
+                </p>
+                <p>
+                    URP:
+                    <INPUT TYPE="text" NAME="txURP" VALUE="0" readonly>
+                    <p>
+                        Base PSS:
+                        <INPUT TYPE="text" NAME="txbINSS" VALUE="0" readonly>
+                    </p>
+                    <p>
+                        Base IRRF:
+                        <INPUT TYPE="text" NAME="txbIRRF" VALUE="0" readonly>
+                    </p>
+                    <p>
+                        Desconto:
+                        <INPUT TYPE="text" NAME="txdesconto" VALUE="0" readonly>
+                    </p>
+            </div>
+        </div>
+        </FORM>
+    </div>
+    <hr>
+    <div id="maindiv3">
+        <h2>
                             Comparação
-                        </h2>
-                        Diferença no líquido:
-                        <input type="text" name="diffLiqAbs" id="diffLiqAbs" value="0" readonly>
-                        O Líquido 2 equivale a
-                        <input type="text" name="diffLiqPor" id="diffLiqPor" value="0" readonly>
-                        do Líquido 1.
-                        <br>
-                        <br>
-                    </div>
-                    <div id="rodape">
-                        <b>
+                        </h2> Diferença no líquido:
+        <input type="text" name="diffLiqAbs" id="diffLiqAbs" value="0" readonly> O Líquido 2 equivale a
+        <input type="text" name="diffLiqPor" id="diffLiqPor" value="0" readonly> do Líquido 1.
+        <br>
+        <br>
+    </div>
+    <div id="rodape">
+        <b>
                             Atenção
-                        </b>
-                        : Os valores calculados aqui não podem ser considerados 100% corretos
-                        devido a possíveis erros nos cálculos
-                        <br>
-                        e mudanças nas fórmulas e nos valores e alíquotas de impostos e gratificações.
-                        Clique
-                        <a href="sobre.html">aqui</a>
-                        para mais detalhes.
-                        <br>
-                        <br>
-                        Desenvolvido por
-                        <a href="http://www.about.me/mol" target="_blank">Alan Mól</a>
-                        &copy; 2013-2015
-                        <br>
-                        <br>
-                        Conheça o
-                        <a href="https://codio.com/" target="_blank">Codio</a>
-                    </div>
-                    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-                    <script>
-                                                                                                                                                                                      var _gaq = [
-                                                                                                                                                                      ['_setAccount', 'UA-43605146-1'],
-                                                                                                                                                                      ['_trackPageview']
-                                                                                                                                                                  ];
-                                                                                                                                                                  (function(d, t) {
-                                                                                                                                                                      var g = d.createElement(t),
-                                                                                                                                                                          s = d.getElementsByTagName(t)[0];
-                                                                                                                                                                      g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
-                                                                                                                                                                      s.parentNode.insertBefore(g, s)
-                                                                                                                                                                  }(document, 'script'));
-                    </script>
-                    <script id="_wauizv">
-                                                                                                                                                                          var _wau = _wau || [];
-                                                                                                                                                      _wau.push(["classic", "jo9044c79opf", "izv"]);
-                                                                                                                                                      (function() {
-                                                                                                                                                          var s = document.createElement("script");
-                                                                                                                                                          s.async = true;
-                                                                                                                                                          s.src = "http://widgets.amung.us/classic.js";
-                                                                                                                                                          //document.getElementsByTagName("head")[0].appendChild(s);
-                                                                                                                                                      })();
-                    </script>
-                </body>
-                
-                </html>
+                        </b> : Os valores calculados aqui não podem ser considerados 100% corretos devido a possíveis erros nos cálculos
+        <br> e mudanças nas fórmulas e nos valores e alíquotas de impostos e gratificações. Clique
+        <a href="sobre.html">aqui</a> para mais detalhes.
+        <br>
+        <br> Desenvolvido por
+        <a href="http://www.about.me/mol" target="_blank">Alan Mól</a> &copy; 2013-2015
+        <br>
+        <br> Conheça o
+        <a href="https://codio.com/" target="_blank">Codio</a>
+    </div>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        var _gaq = [
+            ['_setAccount', 'UA-43605146-1'],
+            ['_trackPageview']
+        ];
+        (function(d, t) {
+            var g = d.createElement(t),
+                s = d.getElementsByTagName(t)[0];
+            g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g, s)
+        }(document, 'script'));
+    </script>
+    <script id="_wauizv">
+        var _wau = _wau || [];
+        _wau.push(["classic", "jo9044c79opf", "izv"]);
+        (function() {
+            var s = document.createElement("script");
+            s.async = true;
+            s.src = "http://widgets.amung.us/classic.js";
+            //document.getElementsByTagName("head")[0].appendChild(s);
+        })();
+    </script>
+</body>
+
+</html>
