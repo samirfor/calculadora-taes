@@ -218,7 +218,7 @@ function calcSalario (form) {
     var creche = (form.creche.checked) ? valorCreche(remuneracao) : 0;    
     var fungrat = valorFG(parseInt(form.ddFG.value, 10), periodo);    
     var bruto = remuneracao + saude + alimentacao + transporte + creche + fungrat;
-    var baseinss = vencimento + urp;
+    var baseinss = vencimento + urp ;
     var aliqinss = Math.floor(baseinss*0.11*100)/100;
     var baseirrf = baseinss + ftinsa*vencimento + fungrat + creche - aliqinss;
     var aliqirrf = valorIRRF(baseirrf, periodo);             
