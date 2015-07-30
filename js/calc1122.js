@@ -32,11 +32,11 @@ function updateQuali (form, classs) {
 }
 
 function calcfatorpg(i, areadireta) {
-    var pesos = Array()
+    var pesos = Array();
     if (areadireta) {
-        pesos = Array(0, 0.1, 0.15, 0.2, 0.25, 0.3, 0.52, 0.75)
+        pesos = Array(0, 0.1, 0.15, 0.2, 0.25, 0.3, 0.52, 0.75);
     } else {
-        pesos = Array(0, 0, 0, 0.1, 0.15, 0.2, 0.35, 0.5)
+        pesos = Array(0, 0, 0, 0.1, 0.15, 0.2, 0.35, 0.5);
     }
     return pesos[i];
 }
@@ -96,7 +96,7 @@ function valorIRRF (base, periodo) {
         } else {
             aliquota = base*0.275 - 790.58;
         }
-    } else { //Ano 2014 pra frente
+    } else if (periodo <= 4) { //Ano 2014 pra frente
         if (base <= 1787.77) {
             aliquota = 0;
         }  else if (base <=2679.29) {
@@ -107,6 +107,18 @@ function valorIRRF (base, periodo) {
             aliquota = base*0.225 - 602.96;
         } else {
             aliquota = base*0.275 - 826.15;
+        }
+    } else  { //Abril 2015 pra frente
+        if (base <= 1903.98) {
+            aliquota = 0;
+        }  else if (base <=2826.65) {
+            aliquota = base*0.075 - 142.80;
+        } else if (base <= 3751.05) {
+            aliquota = base*0.15 - 354.80;
+        } else if (base <=  4664.68) {
+            aliquota = base*0.225 - 636.13;
+        } else {
+            aliquota = base*0.275 - 869.36;
         }
     }
     return Math.floor(aliquota*100)/100;
@@ -219,8 +231,11 @@ function calcSalario (form) {
     var fungrat = valorFG(parseInt(form.ddFG.value, 10), periodo);    
     var bruto = remuneracao + saude + alimentacao + transporte + creche + fungrat;
     var baseinss = vencimento + urp + qualificacao;
+    if (form.novopss.checked && (baseinss > 4663.75)) {
+      baseinss = 4663.75; //Se for da nova previdencia, o calculo é feito baseado no teto. Funpresp nao suportado atualmente.
+    } 
     var aliqinss = Math.floor(baseinss*0.11*100)/100;
-    var baseirrf = baseinss + ftinsa*vencimento + fungrat + creche - aliqinss;
+    var baseirrf = vencimento + urp + qualificacao + ftinsa*vencimento + fungrat + creche - aliqinss;
     var aliqirrf = valorIRRF(baseirrf, periodo);             
     
     var salario = Math.round((bruto - aliqirrf - aliqinss - sintfub)*100)/100;

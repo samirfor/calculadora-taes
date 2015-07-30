@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="css/main.css">
     <script src="js/vendor/modernizr-2.6.2.min.js">
     </script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js">
     </script>
     <script>
         window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')
@@ -348,6 +348,9 @@
                     <input type="checkbox" name="sintfub" value="" onClick="calcSalario(this.form)"> Sintfub:
                     <INPUT TYPE="text" NAME="txsintfub" VALUE="R$ 0,00" readonly>
                     <br>
+                    <span onmouseover="nhpup.popup('Para os sevidores que ingressaram partir de 02/2013, existe um teto no valor base da previdência. Os servidores anteriores a mudança ficaram no regime antigo. Todos podem aderir à previdência complementar do executivo (Funpresp). Veja mais em Carreira.');">
+                      <input type="checkbox" name="novopss" value="" onClick="calcSalario(this.form)" checked> Novo regime da Previdência?
+                    </span>
                 </p>
         </div>
         <div id="divresults1">
@@ -676,6 +679,9 @@
                     <input type="checkbox" name="sintfub" value="" onClick="calcSalario(this.form)"> Sintfub:
                     <INPUT TYPE="text" NAME="txsintfub" VALUE="R$ 0,00" readonly>
                     <br>
+                    <span onmouseover="nhpup.popup('Para os sevidores que ingressaram partir de 02/2013, existe um teto no valor base da previdência. Os servidores anteriores a mudança ficaram no regime antigo. Todos podem aderir à previdência complementar do executivo (Funpresp). Veja mais em Carreira.');">
+                      <input type="checkbox" name="novopss" value="" onClick="calcSalario(this.form)" checked> Novo regime da Previdência?
+                    </span>
                 </p>
         </div>
         <div id="divresults2">
@@ -760,16 +766,6 @@
             g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g, s)
         }(document, 'script'));
-    </script>
-    <script id="_wauizv">
-        var _wau = _wau || [];
-        _wau.push(["classic", "jo9044c79opf", "izv"]);
-        (function() {
-            var s = document.createElement("script");
-            s.async = true;
-            s.src = "http://widgets.amung.us/classic.js";
-            //document.getElementsByTagName("head")[0].appendChild(s);
-        })();
     </script>
 </body>
 
