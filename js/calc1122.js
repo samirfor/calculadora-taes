@@ -206,6 +206,12 @@ function calcSalario (form) {
         } else if (periodo == 5) {
             ftstep = 1.038;
             base = 1197.67;
+        } else if (periodo == 6) {
+            ftstep = 1.038;
+            base = 1197.67*1.055;
+        } else if (periodo == 7) {
+            ftstep = 1.039;
+            base = 1197.67*1.055*1.05;
         }   
     }
     var ftvb = parseFloat(form.ddClasse.value) + parseFloat(form.ddNivel.value) + parseFloat(form.ddProg.value) - 3;   
