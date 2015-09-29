@@ -203,13 +203,13 @@ function calcSalario (form) {
         } else if (periodo == 4) {
             ftstep = 1.038;
             base = 1140.64;
-        } else if (periodo == 5) {
+        } else if (periodo == 5 || periodo == 6) {
             ftstep = 1.038;
             base = 1197.67;
-        } else if (periodo == 6) {
+        } else if (periodo == 7) {
             ftstep = 1.038;
             base = 1197.67*1.055;
-        } else if (periodo == 7) {
+        } else if (periodo == 8) {
             ftstep = 1.039;
             base = 1197.67*1.055*1.05;
         }   
@@ -220,11 +220,14 @@ function calcSalario (form) {
     //var baseurp = Math.round(base * (Math.pow(ftstep, parseFloat(form.ddClasse.value)-1)) * ftcarga * 100) / 100;
     // baseurp no meu contracheque de jan/15 veio sem a progressÃ£o, mas o VB veio com. Se for a regra, usar comentado acima, senÃ£o, apagar baseurp e substituir por vencimento na formula da urp abaixo.
     var alimentacao = 0;
-    if (ftcarga == 0.5) {
-        alimentacao = (form.alim.checked) ? 373/2 : 0;
+    if (periodo < 6) {
+      alimentacao = (form.alim.checked) ? 373 : 0;
     } else {
-        alimentacao = (form.alim.checked) ? 373 : 0;
-    }    
+      alimentacao = (form.alim.checked) ? 458 : 0;
+    } 
+    if (ftcarga == 0.5) {
+      alimentacao = alimentacao/2;
+    }  
     var transporte = (form.trans.checked) ? valorTransporte(vencimento, form.gastoTrans.value) : 0;
     var ftinsa = (form.insa.checked) ? 0.1 : 0;
     var ftpg = calcfatorpg(form.ddQuali.value, form.areaquali[0].checked);    
