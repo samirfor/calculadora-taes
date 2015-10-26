@@ -123,7 +123,7 @@ function valorIRRF (base, periodo) {
     }
     return Math.floor(aliquota*100)/100;
 }
-function valorSaude (bruto, ftidade) {
+function valorSaude (bruto, ftidade, periodo) {
     var tabela = Array();
     tabela[0] = Array(121.94, 127.69, 129.42, 134.60, 138.62, 143.22, 154.98, 157.44, 159.90, 167.70);
     tabela[1] = Array(116.19, 121.94, 123.67, 127.69, 131.72, 136.32, 147.42, 149.76, 152.10, 159.90);
@@ -141,18 +141,26 @@ function valorSaude (bruto, ftidade) {
     else if (bruto < 4000) { ftbruto = 4; }
     else if (bruto < 5500) { ftbruto = 5; }
     else if (bruto < 7500) { ftbruto = 6; }
-    else { ftbruto = 7; }        
-    return tabela[ftbruto][ftidade];  
-}
-function valorCreche(bruto) {
-    var desc = 0;
-    if (bruto < 6200.8) { desc = 0.05; }
-    else if (bruto < 12401.6) { desc = 0.1; }
-    else if (bruto < 18602.4) { desc = 0.15; }
-    else if (bruto < 24803.2) { desc = 0.2; }
-    else { desc = 0.25 ;
+    else { ftbruto = 7; }      
+    var ftAjuste = 1;
+    if (periodo >= 6) {
+      ftAjuste = 1.22618;
     }
-    return 95*(1-desc);
+    return Math.round(tabela[ftbruto][ftidade]*ftAjuste*100)/100;  
+}
+function valorCreche(bruto, periodo) {
+    if (periodo < 6) {
+      var desc = 0;
+      if (bruto < 6200.8) { desc = 0.05; }
+      else if (bruto < 12401.6) { desc = 0.1; }
+      else if (bruto < 18602.4) { desc = 0.15; }
+      else if (bruto < 24803.2) { desc = 0.2; }
+      else { desc = 0.25 ;
+      }
+      return 95*(1-desc);
+    } else {
+      return 321.00;
+    }
 }
 function valorTransporte(vencimento, gasto) {
     var auxilio = 0;
@@ -180,8 +188,8 @@ function valorFG(FG, periodo) {
     return valor;
 }
 function calcSalario (form) {      
-    var ftstep = 1.036;
-    var base = 1086.32;
+    //var ftstep = 1.036;
+    //var base = 1086.32;
     var periodo = parseInt(form.ddAno.value, 10);
     if (form.medico.checked) {
         ftstep = 1.038;
@@ -235,7 +243,7 @@ function calcSalario (form) {
     var qualificacao = ftpg*vencimento
     var remuneracao = vencimento + urp + qualificacao +  Math.floor(ftinsa*vencimento*100)/100;   
     var sintfub = (form.sintfub.checked) ? remuneracao*0.01 : 0;
-    var saude = (form.saude.checked) ? valorSaude(remuneracao, parseInt(form.ddIdade.value, 10)) : 0;
+    var saude = (form.saude.checked) ? valorSaude(remuneracao, parseInt(form.ddIdade.value, 10), periodo) : 0;
     var creche = (form.creche.checked) ? valorCreche(remuneracao) : 0;    
     var fungrat = valorFG(parseInt(form.ddFG.value, 10), periodo);    
     var bruto = remuneracao + saude + alimentacao + transporte + creche + fungrat;
@@ -279,19 +287,19 @@ function calcSalario (form) {
      
      if (tipo=="inverter"){ 
          
-    var values1 = Array(form1.ddClasse.value, form1.ddProg.value, form1.ddFG.value, form1.ddNivel.value, form1.ddCargaH.value, form1.ddAno.value, form1.ddQuali.value, form1.saude.checked, form1.ddIdade.value, form1.removeurp.checked, form1.trans.checked, form1.gastoTrans.value, form1.alim.checked, form1.insa.checked, form1.creche.checked, form1.sintfub.checked, form1.areaquali[0].checked, form1.areaquali[1].checked);
+    var values1 = Array(form1.ddClasse.value, form1.ddProg.value, form1.ddFG.value, form1.ddNivel.value, form1.ddCargaH.value, form1.ddAno.value, form1.ddQuali.value, form1.saude.checked, form1.ddIdade.value, form1.removeurp.checked, form1.trans.checked, form1.gastoTrans.value, form1.alim.checked, form1.insa.checked, form1.creche.checked, form1.sintfub.checked, form1.areaquali[0].checked, form1.areaquali[1].checked, form1.novopss.checked);
          
-    var values2 = Array(form2.ddClasse.value, form2.ddProg.value, form2.ddFG.value, form2.ddNivel.value, form2.ddCargaH.value, form2.ddAno.value, form2.ddQuali.value, form2.saude.checked, form2.ddIdade.value, form2.removeurp.checked, form2.trans.checked, form2.gastoTrans.value, form2.alim.checked, form2.insa.checked, form2.creche.checked, form2.sintfub.checked, form2.areaquali[0].checked, form2.areaquali[1].checked);
+    var values2 = Array(form2.ddClasse.value, form2.ddProg.value, form2.ddFG.value, form2.ddNivel.value, form2.ddCargaH.value, form2.ddAno.value, form2.ddQuali.value, form2.saude.checked, form2.ddIdade.value, form2.removeurp.checked, form2.trans.checked, form2.gastoTrans.value, form2.alim.checked, form2.insa.checked, form2.creche.checked, form2.sintfub.checked, form2.areaquali[0].checked, form2.areaquali[1].checked, form2.novopss.checked);
          
      } else if (tipo=="cima") {
          
-    var values2 = Array(form2.ddClasse.value, form2.ddProg.value, form2.ddFG.value, form2.ddNivel.value, form2.ddCargaH.value, form2.ddAno.value, form2.ddQuali.value, form2.saude.checked, form2.ddIdade.value, form2.removeurp.checked, form2.trans.checked, form2.gastoTrans.value, form2.alim.checked, form2.insa.checked, form2.creche.checked, form2.sintfub.checked, form2.areaquali[0].checked, form2.areaquali[1].checked);
+    var values2 = Array(form2.ddClasse.value, form2.ddProg.value, form2.ddFG.value, form2.ddNivel.value, form2.ddCargaH.value, form2.ddAno.value, form2.ddQuali.value, form2.saude.checked, form2.ddIdade.value, form2.removeurp.checked, form2.trans.checked, form2.gastoTrans.value, form2.alim.checked, form2.insa.checked, form2.creche.checked, form2.sintfub.checked, form2.areaquali[0].checked, form2.areaquali[1].checked, form2.novopss.checked);
          
     var values1 = values2;
          
      } else {
          
-    var values1 = Array(form1.ddClasse.value, form1.ddProg.value, form1.ddFG.value, form1.ddNivel.value, form1.ddCargaH.value, form1.ddAno.value, form1.ddQuali.value, form1.saude.checked, form1.ddIdade.value, form1.removeurp.checked, form1.trans.checked, form1.gastoTrans.value, form1.alim.checked, form1.insa.checked, form1.creche.checked, form1.sintfub.checked, form1.areaquali[0].checked, form1.areaquali[1].checked);
+    var values1 = Array(form1.ddClasse.value, form1.ddProg.value, form1.ddFG.value, form1.ddNivel.value, form1.ddCargaH.value, form1.ddAno.value, form1.ddQuali.value, form1.saude.checked, form1.ddIdade.value, form1.removeurp.checked, form1.trans.checked, form1.gastoTrans.value, form1.alim.checked, form1.insa.checked, form1.creche.checked, form1.sintfub.checked, form1.areaquali[0].checked, form1.areaquali[1].checked, form1.novopss.checked);
          
     var values2 = values1 ;        
      }
@@ -314,6 +322,7 @@ function calcSalario (form) {
     form1.sintfub.checked = values2[15]
     form1.areaquali[0].checked = values2[16]
     form1.areaquali[1].checked = values2[17]
+    form1.novopss.checked = values2[18]
     
     form2.ddClasse.value = values1[0]
     form2.ddProg.value = values1[1]
@@ -333,6 +342,7 @@ function calcSalario (form) {
     form2.sintfub.checked = values1[15]
     form2.areaquali[0].checked = values1[16]
     form2.areaquali[1].checked = values1[17]
+    form2.novopss.checked = values1[18]
     
     updateQuali(form1, values2[0])
     updateQuali(form2, values1[0])
