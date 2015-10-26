@@ -21,9 +21,10 @@ textarea {
 body {
     font-size: 1em;
     line-height: 1.4;    
+    overflow-y: scroll; /*Garantindo scrollbar para não dançar entre páginas */
 }
 input[type="text"] {
-    border: 0px;
+    border: 0;
     font-weight: bold;
     width: 85px;
 }
@@ -112,8 +113,8 @@ textarea {
 
 #maindiv, #maindiv2, #maindiv3 {
     overflow: hidden;
-    width: 800px;
-    padding-left: 30px;  
+    width: 1000px;
+    /*padding-left: 30px;  */
     margin: 0 auto;
     /*margin-left: auto;
     margin-right: auto;*/
@@ -125,9 +126,9 @@ textarea {
 }
 #divresults1, #divresults2 {  
   position: absolute;
-  margin: 0 0 40px 400px;
+  margin: 0 0 40px 600px;
   border: 1px solid black;    
-  width: 380px;    
+  width: 400px;    
   text-align: left;
 }
 #divresults1_1, #divresults2_1 {
@@ -167,10 +168,16 @@ textarea {
 }
 
 hr {
-  width: 850px;   
+  width: 1050px;   
   margin: 0 auto;
 }
-h1, h2 {
+
+h1 {
+    margin: 5px auto;    
+    text-align: center;
+}
+
+h2 {
     margin: 5px auto;    
 }
 
@@ -217,7 +224,7 @@ a:hover {
 
 #div_botoes {
     text-align: center;
-    width: 800px; 
+    width: 1000px; 
     margin: 0 auto;       
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -231,7 +238,7 @@ a:hover {
     cursor: pointer;
 }
 
-img.center{    
+img.center {    
     margin-left: auto;
     margin-right: auto;    
 }
