@@ -34,7 +34,7 @@
           -->
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
-        <script src="js/calc1122.js"></script>
+        <script src="js/compressed.js"></script>
         <script type="text/javascript" src="js/nhpup_1.1.js"></script>
       </head>
       <body onLoad="firstload();">
@@ -222,6 +222,36 @@
                     20 horas
                   </option>
                 </select>
+                <span style="padding-left: 25px;" onmouseover="nhpup.popup('O Adicional por Tempo de Serviço é calculado como 5% por cada período de 5 anos. Ele foi revogado em 1999, mas se mantém para aqueles que o recebiam na época.')">
+                  Anuênio: 
+                  <select name = "ddAnuenio" id = "ddAnuenio" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
+                    onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
+                     <option value="1">
+                      0%
+                    </option>
+                    <option value="1.05">
+                      5%
+                    </option>
+                    <option value="1.1">
+                      10%
+                    </option>
+                    <option value="1.15">
+                      15%
+                    </option>
+                    <option value="1.2">
+                      20%
+                    </option>
+                    <option value="1.25">
+                      25%
+                    </option>
+                    <option value="1.3">
+                      30%
+                    </option>
+                    <option value="1.35">
+                      35%
+                    </option>
+                  </select>
+                </span>
                 <br>
                 <span onmouseover="nhpup.popup('Os Servidores Técnico-Administrativos conseguiram uma série de aumentos após a greve de 2012, que ocorrerão nos períodos abaixo.');">
                   Período:                                        
@@ -253,7 +283,7 @@
                     </option>
                   </select>
                 </span>
-                <span onmouseover="nhpup.popup('Os médicos e veterinários possuem matriz salarial diferente no PCCTAE. Nota: Apenas os valores de 2015 para 40 horas semanais estão configurados apropriadamente.');">
+                <span style="padding-left: 25px;" onmouseover="nhpup.popup('Os médicos e veterinários possuem matriz salarial diferente no PCCTAE. Nota: Apenas os valores de 2015 para 40 horas semanais estão configurados apropriadamente.');">
                 <input type="checkbox" name="medico" value="medico" onClick="calcSalario(this.form)">
                 Médico/Veterinário                                        
                 </span>
@@ -329,7 +359,7 @@
                   </select>
                   <INPUT TYPE="text" NAME="txSaude" VALUE="0" readonly>
                 </span>
-                <span onmouseover="nhpup.popup('A URP é um adicional recebido em algumas IFES. É um assunto polêmico que está prestes a ser julgado no STF, comvtendência de que seja removida dos servidores. Marque esta opção caso você receba URP. Veja o menu Carreira para mais informações.');">
+                <span onmouseover="nhpup.popup('A URP é um adicional recebido em algumas IFES. É um assunto polêmico que está prestes a ser julgado no STF, com tendência de que seja removida dos servidores. Marque esta opção caso você receba URP. Veja o menu Carreira para mais informações.');">
                 <input type="checkbox" name="removeurp" value="removeURP" onClick="calcSalario(this.form)">
                 URP
                 </span>
@@ -345,16 +375,42 @@
                 <br>
                 <input type="checkbox" name="alim" value="Alim" onClick="calcSalario(this.form)" checked> Alimentação:
                 <INPUT TYPE="text" name="txAlim" id="txAlim" value="R$ 373,00" readonly>
-                <input type="checkbox" name="insa" value="Insa" onClick="calcSalario(this.form)" style="margin-left: 20px;"> Insalubridade:
+                <!--<input type="checkbox" name="insa" value="Insa" onClick="calcSalario(this.form)" style="margin-left: 20px;"> --> 
+                Adicional de Risco:
+                <select name="ddInsa" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
+                  <option value="0" selected>
+                    Nenhum
+                  </option>
+                  <option value="0.05">
+                    Insal. (5%)
+                  </option>
+                  <option value="0.1">
+                    Insal. (10%)
+                  </option>
+                  <option value="0.2">
+                    Insal. (20%)
+                  </option>
+                  <option value="0.1">
+                    Peric. (10%)
+                  </option>
+                </select>
+                <!-- Insalubridade: -->
                 <INPUT TYPE="text" NAME="txInsa" VALUE="0" readonly>
                 <br>
-                <input type="checkbox" name="creche" value="0" onClick="calcSalario(this.form)"> Auxílio pré-escolar:
+                <!-- <input type="checkbox" name="creche" value="0" onClick="calcSalario(this.form)">  -->
+                Auxílio pré-escolar. Nº:
+                <input type="number" name="numCreche" min="0" max="10" step="1" value="0"
+                  style="width: 30px;" onClick="calcSalario(this.form)" onKeyPress="validateGD1(event, this.form);"
+                  onKeyUp="validateGD2(this.form);">
                 <INPUT TYPE="text" NAME="txCreche" VALUE="0" readonly>
-                <input type="checkbox" name="sintfub" value="" onClick="calcSalario(this.form)" style="margin-left: 4px;"> Sintfub:
+                <span onmouseover="nhpup.popup('A contribuição sindical varia de acordo com o sindicato. O valor aqui é referente a 1% dos rendimentos, seguindo a regra do Sintfub/UnB.')">
+                  <input type="checkbox" name="sintfub" value="" onClick="calcSalario(this.form)" style="margin-left: 4px;">
+                  Sindicato:
                 <INPUT TYPE="text" NAME="txsintfub" VALUE="R$ 0,00" readonly>
+                </span>
                 <br>
                 <span onmouseover="nhpup.popup('Para os sevidores que ingressaram partir de 02/2013, existe um teto no valor base da previdência. Os servidores anteriores a mudança ficaram no regime antigo. Todos podem aderir à previdência complementar do executivo (Funpresp). Veja mais em Carreira.');">
-                <input type="checkbox" name="novopss" value="" onClick="calcSalario(this.form)" checked> Novo regime da Previdência?
+                <input type="checkbox" name="novopss" value="" onClick="calcSalario(this.form)" checked> Novo regime da Previdência
                 </span>
               </p>
             </div>
@@ -561,6 +617,36 @@
                     20 horas
                   </option>
                 </select>
+                <span style="padding-left: 25px;" onmouseover="nhpup.popup('O Adicional por Tempo de Serviço é calculado como 5% por cada período de 5 anos. Ele foi revogado em 1999, mas se mantém para aqueles que o recebiam na época.')">
+                  Anuênio: 
+                  <select name = "ddAnuenio" id = "ddAnuenio" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
+                    onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
+                     <option value="1">
+                      0%
+                    </option>
+                    <option value="1.05">
+                      5%
+                    </option>
+                    <option value="1.1">
+                      10%
+                    </option>
+                    <option value="1.15">
+                      15%
+                    </option>
+                    <option value="1.2">
+                      20%
+                    </option>
+                    <option value="1.25">
+                      25%
+                    </option>
+                    <option value="1.3">
+                      30%
+                    </option>
+                    <option value="1.35">
+                      35%
+                    </option>
+                  </select>
+                </span>
                 <br>
                 <span onmouseover="nhpup.popup('Os Servidores Técnico-Administrativos conseguiram uma série de aumentos após a greve de 2012, que ocorrerão nos períodos abaixo.');">
                   Período:                                        
@@ -592,7 +678,7 @@
                     </option>
                   </select>
                 </span>
-                <span onmouseover="nhpup.popup('Os médicos e veterinários possuem matriz salarial diferente no PCCTAE. Nota: Apenas os valores de 2015 para 40 horas semanais estão configurados apropriadamente.');">
+                <span style="padding-left: 25px;" onmouseover="nhpup.popup('Os médicos e veterinários possuem matriz salarial diferente no PCCTAE. Nota: Apenas os valores de 2015 para 40 horas semanais estão configurados apropriadamente.');">
                 <input type="checkbox" name="medico" value="medico" onClick="calcSalario(this.form)">
                 Médico/Veterinário                                        
                 </span>
@@ -668,7 +754,7 @@
                   </select>
                   <INPUT TYPE="text" NAME="txSaude" VALUE="0" readonly>
                 </span>
-                <span onmouseover="nhpup.popup('A URP é um adicional recebido em algumas IFES. É um assunto polêmico que está prestes a ser julgado no STF, comvtendência de que seja removida dos servidores. Marque esta opção caso você receba URP. Veja o menu Carreira para mais informações.');">
+                <span onmouseover="nhpup.popup('A URP é um adicional recebido em algumas IFES. É um assunto polêmico que está prestes a ser julgado no STF, com tendência de que seja removida dos servidores. Marque esta opção caso você receba URP. Veja o menu Carreira para mais informações.');">
                 <input type="checkbox" name="removeurp" value="removeURP" onClick="calcSalario(this.form)">
                 URP
                 </span>
@@ -684,16 +770,42 @@
                 <br>
                 <input type="checkbox" name="alim" value="Alim" onClick="calcSalario(this.form)" checked> Alimentação:
                 <INPUT TYPE="text" name="txAlim" id="txAlim" value="R$ 373,00" readonly>
-                <input type="checkbox" name="insa" value="Insa" onClick="calcSalario(this.form)" style="margin-left: 20px;"> Insalubridade:
+                <!--<input type="checkbox" name="insa" value="Insa" onClick="calcSalario(this.form)" style="margin-left: 20px;"> --> 
+                Adicional de Risco:
+                <select name="ddInsa" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
+                  <option value="0" selected>
+                    Nenhum
+                  </option>
+                  <option value="0.05">
+                    Insal. (5%)
+                  </option>
+                  <option value="0.1">
+                    Insal. (10%)
+                  </option>
+                  <option value="0.2">
+                    Insal. (20%)
+                  </option>
+                  <option value="0.1">
+                    Peric. (10%)
+                  </option>
+                </select>
+                <!-- Insalubridade: -->
                 <INPUT TYPE="text" NAME="txInsa" VALUE="0" readonly>
                 <br>
-                <input type="checkbox" name="creche" value="0" onClick="calcSalario(this.form)"> Auxílio pré-escolar:
+                <!-- <input type="checkbox" name="creche" value="0" onClick="calcSalario(this.form)">  -->
+                Auxílio pré-escolar. Nº:
+                <input type="number" name="numCreche" min="0" max="10" step="1" value="0"
+                  style="width: 30px;" onClick="calcSalario(this.form)" onKeyPress="validateGD1(event, this.form);"
+                  onKeyUp="validateGD2(this.form);">
                 <INPUT TYPE="text" NAME="txCreche" VALUE="0" readonly>
-                <input type="checkbox" name="sintfub" value="" onClick="calcSalario(this.form)" style="margin-left: 4px;"> Sintfub:
+                <span onmouseover="nhpup.popup('A contribuição sindical varia de acordo com o sindicato. O valor aqui é referente a 1% dos rendimentos, seguindo a regra do Sintfub/UnB.')">
+                  <input type="checkbox" name="sintfub" value="" onClick="calcSalario(this.form)" style="margin-left: 4px;"> 
+                  Sindicato:
                 <INPUT TYPE="text" NAME="txsintfub" VALUE="R$ 0,00" readonly>
+                </span>
                 <br>
                 <span onmouseover="nhpup.popup('Para os sevidores que ingressaram partir de 02/2013, existe um teto no valor base da previdência. Os servidores anteriores a mudança ficaram no regime antigo. Todos podem aderir à previdência complementar do executivo (Funpresp). Veja mais em Carreira.');">
-                <input type="checkbox" name="novopss" value="" onClick="calcSalario(this.form)" checked> Novo regime da Previdência?
+                <input type="checkbox" name="novopss" value="" onClick="calcSalario(this.form)" checked> Novo regime da Previdência
                 </span>
               </p>
             </div>

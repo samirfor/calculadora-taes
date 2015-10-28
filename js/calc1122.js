@@ -148,7 +148,7 @@ function valorSaude (bruto, ftidade, periodo) {
     }
     return Math.round(tabela[ftbruto][ftidade]*ftAjuste*100)/100;  
 }
-function valorCreche(bruto, periodo) {
+function valorCreche(bruto, periodo, n) {
     if (periodo < 6) {
       var desc = 0;
       if (bruto < 6200.8) { desc = 0.05; }
@@ -157,9 +157,9 @@ function valorCreche(bruto, periodo) {
       else if (bruto < 24803.2) { desc = 0.2; }
       else { desc = 0.25 ;
       }
-      return 95*(1-desc);
+      return 95*(1-desc)*n;
     } else {
-      return 321.00;
+      return 321.00*n;
     }
 }
 function valorTransporte(vencimento, gasto) {
@@ -187,6 +187,7 @@ function valorFG(FG, periodo) {
     else { valor = FG2015[FG]; }
     return valor;
 }
+
 function calcSalario (form) {      
     //var ftstep = 1.036;
     //var base = 1086.32;
@@ -224,7 +225,7 @@ function calcSalario (form) {
     }
     var ftvb = parseFloat(form.ddClasse.value) + parseFloat(form.ddNivel.value) + parseFloat(form.ddProg.value) - 3;   
     var ftcarga = form.ddCargaH.value;    
-    var vencimento =  Math.floor(base * (Math.pow(ftstep, ftvb)) * ftcarga * 100) / 100; 
+    var vencimento = Math.floor(form.ddAnuenio.value * base * (Math.pow(ftstep, ftvb)) * ftcarga * 100) / 100; 
     //var baseurp = Math.round(base * (Math.pow(ftstep, parseFloat(form.ddClasse.value)-1)) * ftcarga * 100) / 100;
     // baseurp no meu contracheque de jan/15 veio sem a progressÃ£o, mas o VB veio com. Se for a regra, usar comentado acima, senÃ£o, apagar baseurp e substituir por vencimento na formula da urp abaixo.
     var alimentacao = 0;
@@ -237,14 +238,14 @@ function calcSalario (form) {
       alimentacao = alimentacao/2;
     }  
     var transporte = (form.trans.checked) ? valorTransporte(vencimento, form.gastoTrans.value) : 0;
-    var ftinsa = (form.insa.checked) ? 0.1 : 0;
+    var ftinsa = form.ddInsa.value;
     var ftpg = calcfatorpg(form.ddQuali.value, form.areaquali[0].checked);    
     var urp = (form.removeurp.checked) ? vencimento*0.2605*(1+ftpg) : 0;
     var qualificacao = ftpg*vencimento
     var remuneracao = vencimento + urp + qualificacao +  Math.floor(ftinsa*vencimento*100)/100;   
     var sintfub = (form.sintfub.checked) ? remuneracao*0.01 : 0;
     var saude = (form.saude.checked) ? valorSaude(remuneracao, parseInt(form.ddIdade.value, 10), periodo) : 0;
-    var creche = (form.creche.checked) ? valorCreche(remuneracao) : 0;    
+    var creche = valorCreche(remuneracao, periodo, form.numCreche.value);  
     var fungrat = valorFG(parseInt(form.ddFG.value, 10), periodo);    
     var bruto = remuneracao + saude + alimentacao + transporte + creche + fungrat;
     var baseinss = vencimento + urp + qualificacao;
