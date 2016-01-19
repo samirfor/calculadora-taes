@@ -1,8 +1,8 @@
 var liq1 = 0;
 var liq2 = 0;
 function updateQuali (form, classs) {    
-    var alloptions = Array("Nenhuma", "Fundamental Completo", "Médio Completo", "Médio Técnico", "Graduação Completa", "Especialização", "Mestrado", "Doutorado");
-    var allvalues = Array(0, 0.1, 0.15, 0.2, 0.25, 0.3, 0.52, 0.75);
+    var alloptions = Array("Mínima do Cargo", "Fundamental Completo", "Médio Completo", "Médio Técnico", "Graduação Completa", "Especialização", "Mestrado", "Doutorado");
+    var allvalues = Array(0, 1, 2, 3, 4, 5, 6, 7);
     var newoptions = Array();
     var newvalues = Array();
     var classe = parseFloat(classs);     
@@ -10,8 +10,8 @@ function updateQuali (form, classs) {
         newoptions = alloptions;
         newvalues = allvalues;
     } else if (classe == 17) {
-        newoptions = alloptions.slice(3, alloptions.length);
-        newvalues = allvalues.slice(3, alloptions.length);
+        newoptions = alloptions.slice(2, alloptions.length);
+        newvalues = allvalues.slice(2, alloptions.length);
         newoptions.splice(0, 1, "Exigência Mínima");
         newvalues.splice(0, 1, 0);
     } else if (classe == 31) {
@@ -31,10 +31,21 @@ function updateQuali (form, classs) {
     calcSalario (form);
 }
 
+function calcfatorpg(i, areadireta) {
+    var pesos = Array();
+    if (areadireta) {
+        pesos = Array(0, 0.1, 0.15, 0.2, 0.25, 0.3, 0.52, 0.75);
+    } else {
+        pesos = Array(0, 0, 0, 0.1, 0.15, 0.2, 0.35, 0.5);
+    }
+    return pesos[i];
+}
+        
 function firstload() {
     updateQuali(myform, 1);
     updateQuali(myform2, 1);
 }
+        
 function validateGD1(evt, form) {
     var theEvent = evt || window.event;
     var key = theEvent.keyCode || theEvent.which;
@@ -85,7 +96,7 @@ function valorIRRF (base, periodo) {
         } else {
             aliquota = base*0.275 - 790.58;
         }
-    } else { //Ano 2014 pra frente
+    } else if (periodo <= 4) { //Ano 2014 pra frente
         if (base <= 1787.77) {
             aliquota = 0;
         }  else if (base <=2679.29) {
@@ -97,10 +108,22 @@ function valorIRRF (base, periodo) {
         } else {
             aliquota = base*0.275 - 826.15;
         }
+    } else  { //Abril 2015 pra frente
+        if (base <= 1903.98) {
+            aliquota = 0;
+        }  else if (base <=2826.65) {
+            aliquota = base*0.075 - 142.80;
+        } else if (base <= 3751.05) {
+            aliquota = base*0.15 - 354.80;
+        } else if (base <=  4664.68) {
+            aliquota = base*0.225 - 636.13;
+        } else {
+            aliquota = base*0.275 - 869.36;
+        }
     }
     return Math.floor(aliquota*100)/100;
 }
-function valorSaude (bruto, ftidade) {
+function valorSaude (bruto, ftidade, periodo) {
     var tabela = Array();
     tabela[0] = Array(121.94, 127.69, 129.42, 134.60, 138.62, 143.22, 154.98, 157.44, 159.90, 167.70);
     tabela[1] = Array(116.19, 121.94, 123.67, 127.69, 131.72, 136.32, 147.42, 149.76, 152.10, 159.90);
@@ -118,18 +141,26 @@ function valorSaude (bruto, ftidade) {
     else if (bruto < 4000) { ftbruto = 4; }
     else if (bruto < 5500) { ftbruto = 5; }
     else if (bruto < 7500) { ftbruto = 6; }
-    else { ftbruto = 7; }        
-    return tabela[ftbruto][ftidade];  
-}
-function valorCreche(bruto) {
-    var desc = 0;
-    if (bruto < 6200.8) { desc = 0.05; }
-    else if (bruto < 12401.6) { desc = 0.1; }
-    else if (bruto < 18602.4) { desc = 0.15; }
-    else if (bruto < 24803.2) { desc = 0.2; }
-    else { desc = 0.25 ;
+    else { ftbruto = 7; }      
+    var ftAjuste = 1;
+    if (periodo >= 6) {
+      ftAjuste = 1.22618;
     }
-    return 95*(1-desc);
+    return Math.round(tabela[ftbruto][ftidade]*ftAjuste*100)/100;  
+}
+function valorCreche(bruto, periodo, n) {
+    if (periodo < 6) {
+      var desc = 0;
+      if (bruto < 6200.8) { desc = 0.05; }
+      else if (bruto < 12401.6) { desc = 0.1; }
+      else if (bruto < 18602.4) { desc = 0.15; }
+      else if (bruto < 24803.2) { desc = 0.2; }
+      else { desc = 0.25 ;
+      }
+      return 95*(1-desc)*n;
+    } else {
+      return 321.00*n;
+    }
 }
 function valorTransporte(vencimento, gasto) {
     var auxilio = 0;
@@ -156,9 +187,10 @@ function valorFG(FG, periodo) {
     else { valor = FG2015[FG]; }
     return valor;
 }
+
 function calcSalario (form) {      
-    var ftstep = 1.036;
-    var base = 1086.32;
+    //var ftstep = 1.036;
+    //var base = 1086.32;
     var periodo = parseInt(form.ddAno.value, 10);
     if (form.medico.checked) {
         ftstep = 1.038;
@@ -180,36 +212,57 @@ function calcSalario (form) {
         } else if (periodo == 4) {
             ftstep = 1.038;
             base = 1140.64;
-        } else if (periodo == 5) {
+        } else if (periodo == 5 || periodo == 6) {
             ftstep = 1.038;
             base = 1197.67;
+        } else if (periodo == 7) {
+            ftstep = 1.038;
+            base = 1197.67*1.055;
+        } else if (periodo == 8) {
+            ftstep = 1.039;
+            base = 1197.67*1.055*1.05;
         }   
     }
     var ftvb = parseFloat(form.ddClasse.value) + parseFloat(form.ddNivel.value) + parseFloat(form.ddProg.value) - 3;   
     var ftcarga = form.ddCargaH.value;    
-    var vencimento =  Math.floor(base * (Math.pow(ftstep, ftvb)) * ftcarga * 100) / 100; 
-    var baseurp = vencimento;//Math.round(base * (Math.pow(ftstep, parseFloat(form.ddClasse.value)-1)) * ftcarga * 100) / 100;
-    // baseurp no meu contracheque de jan/15 veio sem a progressão, mas o VB veio com. Se for a regra, usar comentado acima, senão, apagar baseurp e substituir por vencimento na formula da urp abaixo.
+    var vencimento = Math.floor(form.ddAnuenio.value * base * (Math.pow(ftstep, ftvb)) * ftcarga * 100) / 100; 
+    //var baseurp = Math.round(base * (Math.pow(ftstep, parseFloat(form.ddClasse.value)-1)) * ftcarga * 100) / 100;
+    // baseurp no meu contracheque de jan/15 veio sem a progressÃ£o, mas o VB veio com. Se for a regra, usar comentado acima, senÃ£o, apagar baseurp e substituir por vencimento na formula da urp abaixo.
     var alimentacao = 0;
-    if (ftcarga == 0.5) {
-        alimentacao = (form.alim.checked) ? 373/2 : 0;
+    if (periodo < 6) {
+      alimentacao = (form.alim.checked) ? 373 : 0;
     } else {
-        alimentacao = (form.alim.checked) ? 373 : 0;
-    }    
+      alimentacao = (form.alim.checked) ? 458 : 0;
+    } 
+    if (ftcarga == 0.5) {
+      alimentacao = alimentacao/2;
+    }  
     var transporte = (form.trans.checked) ? valorTransporte(vencimento, form.gastoTrans.value) : 0;
-    var ftinsa = (form.insa.checked) ? 0.1 : 0;
-    var ftpg = form.ddQuali.value;    
-    var urp = (!form.removeurp.checked) ? baseurp*0.2605 : 0;
-    var remuneracao = vencimento + urp + ftpg*(vencimento+urp) +  Math.floor(ftinsa*vencimento*100)/100;    
-    var saude = (form.saude.checked) ? valorSaude(remuneracao, parseInt(form.ddIdade.value, 10)) : 0;
-    var creche = (form.creche.checked) ? valorCreche(remuneracao) : 0;    
+    var ftinsa = form.ddInsa.value;
+    var ftpg = calcfatorpg(form.ddQuali.value, form.areaquali[0].checked);    
+    var urp = (form.removeurp.checked) ? vencimento*0.2605*(1+ftpg) : 0;
+    var qualificacao = ftpg*vencimento
+    var remuneracao = vencimento + urp + qualificacao +  Math.floor(ftinsa*vencimento*100)/100;   
+    var sintfub = (form.sintfub.checked) ? remuneracao*0.01 : 0;
+    var saude = (form.saude.checked) ? valorSaude(remuneracao, parseInt(form.ddIdade.value, 10), periodo) : 0;
+    var creche = valorCreche(remuneracao, periodo, form.numCreche.value);  
     var fungrat = valorFG(parseInt(form.ddFG.value, 10), periodo);    
     var bruto = remuneracao + saude + alimentacao + transporte + creche + fungrat;
-    var baseinss = vencimento + urp + ftpg*(vencimento+urp);
+    var baseinss = vencimento + urp + qualificacao;
+    var tetoinss = 4663.75
+    if (periodo >= 6) {
+      tetoinss = 5189.82
+    } 
+    if (form.novopss.checked && (baseinss > tetoinss)) {
+      baseinss = tetoinss; //Se for da nova previdencia, o calculo é feito baseado no teto. Funpresp nao suportado atualmente.
+    } 
     var aliqinss = Math.floor(baseinss*0.11*100)/100;
-    var baseirrf = baseinss + ftinsa*vencimento + fungrat + creche - aliqinss;
+    var basefunp = vencimento + urp + qualificacao - tetoinss;
+    var aliqfunp = basefunp*form.ddFunp.value;
+    var baseirrf = vencimento + urp + qualificacao + ftinsa*vencimento + fungrat + creche - aliqinss - aliqfunp;
     var aliqirrf = valorIRRF(baseirrf, periodo);             
-    var salario = Math.round((bruto - aliqirrf - aliqinss)*100)/100;
+    
+    var salario = Math.round((bruto - aliqirrf - aliqinss - aliqfunp - sintfub)*100)/100;
     if (form.name == "myform") {
         liq1 = salario;
     }  else {
@@ -227,9 +280,87 @@ function calcSalario (form) {
     form.txTrans.value = formatValor(Math.round(transporte*100)/100);
     form.txAlim.value = formatValor(alimentacao);
     form.txCreche.value = formatValor(creche);
-    form.txURP.value = formatValor(Math.round((urp+ftpg*(vencimento+urp))*100)/100);
+    form.txURP.value = formatValor(Math.round(urp*100)/100);
     form.txbIRRF.value = formatValor(Math.round(baseirrf*100)/100);
     form.txbINSS.value = formatValor(Math.round(baseinss*100)/100);
     form.txdesconto.value = formatValor(Math.round((aliqirrf+aliqinss)*100)/100);
-    
+    form.txsintfub.value = formatValor(Math.round(sintfub*100)/100);    
+    form.txQualif.value = formatValor(Math.round(qualificacao*100)/100);
+    form.txFunp.value = formatValor(Math.round(aliqfunp*100)/100)
 }
+
+ function inverterform (tipo) {
+     var form1 = document.forms["myform"]
+     var form2 = document.forms["myform2"]     
+     
+     if (tipo=="inverter"){ 
+         
+    var values1 = Array(form1.ddClasse.value, form1.ddProg.value, form1.ddFG.value, form1.ddNivel.value, form1.ddCargaH.value, form1.ddAno.value, form1.ddQuali.value, form1.saude.checked, form1.ddIdade.value, form1.removeurp.checked, form1.trans.checked, form1.gastoTrans.value, form1.alim.checked, form1.ddInsa.value, form1.numCreche.value, form1.sintfub.checked, form1.areaquali[0].checked, form1.areaquali[1].checked, form1.novopss.checked, form1.ddFunp.value);
+         
+    var values2 = Array(form2.ddClasse.value, form2.ddProg.value, form2.ddFG.value, form2.ddNivel.value, form2.ddCargaH.value, form2.ddAno.value, form2.ddQuali.value, form2.saude.checked, form2.ddIdade.value, form2.removeurp.checked, form2.trans.checked, form2.gastoTrans.value, form2.alim.checked, form2.ddInsa.value, form2.numCreche.value, form2.sintfub.checked, form2.areaquali[0].checked, form2.areaquali[1].checked, form2.novopss.checked, form2.ddFunp.value);
+         
+     } else if (tipo=="cima") {
+         
+    var values2 = Array(form2.ddClasse.value, form2.ddProg.value, form2.ddFG.value, form2.ddNivel.value, form2.ddCargaH.value, form2.ddAno.value, form2.ddQuali.value, form2.saude.checked, form2.ddIdade.value, form2.removeurp.checked, form2.trans.checked, form2.gastoTrans.value, form2.alim.checked, form2.ddInsa.value, form2.numCreche.value, form2.sintfub.checked, form2.areaquali[0].checked, form2.areaquali[1].checked, form2.novopss.checked, form2.ddFunp.value);
+         
+    var values1 = values2;
+         
+     } else {
+         
+    var values1 = Array(form1.ddClasse.value, form1.ddProg.value, form1.ddFG.value, form1.ddNivel.value, form1.ddCargaH.value, form1.ddAno.value, form1.ddQuali.value, form1.saude.checked, form1.ddIdade.value, form1.removeurp.checked, form1.trans.checked, form1.gastoTrans.value, form1.alim.checked, form1.ddInsa.value, form1.numCreche.value, form1.sintfub.checked, form1.areaquali[0].checked, form1.areaquali[1].checked, form1.novopss.checked, form1.ddFunp.value);
+         
+    var values2 = values1 ;        
+     }
+    
+    form1.ddClasse.value = values2[0]
+    form1.ddProg.value = values2[1]
+    form1.ddFG.value = values2[2]
+    form1.ddNivel.value = values2[3]
+    form1.ddCargaH.value = values2[4]
+    form1.ddAno.value = values2[5]
+    
+    form1.saude.checked = values2[7]
+    form1.ddIdade.value = values2[8]
+    form1.removeurp.checked = values2[9]
+    form1.trans.checked = values2[10]
+    form1.gastoTrans.value = values2[11]
+    form1.alim.checked = values2[12]
+    form1.ddInsa.value = values2[13]
+    form1.numCreche.value = values2[14]
+    form1.sintfub.checked = values2[15]
+    form1.areaquali[0].checked = values2[16]
+    form1.areaquali[1].checked = values2[17]
+    form1.novopss.checked = values2[18]
+    form1.ddFunp.value = values2[19]
+    
+    form2.ddClasse.value = values1[0]
+    form2.ddProg.value = values1[1]
+    form2.ddFG.value = values1[2]
+    form2.ddNivel.value = values1[3]
+    form2.ddCargaH.value = values1[4]
+    form2.ddAno.value = values1[5]
+    
+    form2.saude.checked = values1[7]
+    form2.ddIdade.value = values1[8]
+    form2.removeurp.checked = values1[9]
+    form2.trans.checked = values1[10]
+    form2.gastoTrans.value = values1[11]
+    form2.alim.checked = values1[12]
+    form2.ddInsa.value = values1[13]
+    form2.numCreche.value = values1[14]
+    form2.sintfub.checked = values1[15]
+    form2.areaquali[0].checked = values1[16]
+    form2.areaquali[1].checked = values1[17]
+    form2.novopss.checked = values1[18]
+    form2.ddFunp.value = values1[19]
+    
+    updateQuali(form1, values2[0])
+    updateQuali(form2, values1[0])
+    
+    form1.ddQuali.value = values2[6]
+    form2.ddQuali.value = values1[6]
+    
+    calcSalario(form1)
+    calcSalario(form2)
+}               
+                        

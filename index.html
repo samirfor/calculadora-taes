@@ -288,7 +288,7 @@
                 <br> Qualificação:
                 <select name="ddQuali" id="ddQuali" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
                   <option value="0" selected>
-                    Nenhuma
+                    Mínima do Cargo
                   </option>
                   <option value="0.1">
                     Fundamental Completo
@@ -410,7 +410,7 @@
                 <span onmouseover="nhpup.popup('Para os sevidores que ingressaram partir de 02/2013, existe um teto no valor base da previdência. Os servidores anteriores a mudança ficaram no regime antigo. Todos podem aderir à previdência complementar do executivo (Funpresp). Veja mais em Carreira.');">
                 <input type="checkbox" name="novopss" value="" onClick="calcSalario(this.form)" checked> Novo regime da Previdência
                 </span>
-                <span style="padding-left: 40px;" onmouseover="nhpup.popup('Este campo ainda não foi ativado. Aguarde!');">Funpresp:</span>
+                <span style="padding-left: 40px;" onmouseover="nhpup.popup('Caso tenha aderido à Funpresp na modalidade ativo normal, a contribuição pode ser feita em uma das três alíquotas disponíveis.');">Funpresp:</span>
                 <select name="ddFunp" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
                   <option value="0" selected>
                     Não aderido
@@ -425,6 +425,7 @@
                     8,5%
                   </option>
                 </select>
+                <INPUT TYPE="text" NAME="txFunp" VALUE="R$ 0,00" readonly>
               </p>
             </div>
             <div id="divresults1">
@@ -698,7 +699,7 @@
                 <br> Qualificação:
                 <select name="ddQuali" id="ddQuali" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
                   <option value="0" selected>
-                    Nenhuma
+                    Mínima do Cargo
                   </option>
                   <option value="0.1">
                     Fundamental Completo
@@ -820,7 +821,7 @@
                 <span onmouseover="nhpup.popup('Para os sevidores que ingressaram partir de 02/2013, existe um teto no valor base da previdência. Os servidores anteriores a mudança ficaram no regime antigo. Todos podem aderir à previdência complementar do executivo (Funpresp). Veja mais em Carreira.');">
                 <input type="checkbox" name="novopss" value="" onClick="calcSalario(this.form)" checked> Novo regime da Previdência
                 </span>
-                <span style="padding-left: 40px;" onmouseover="nhpup.popup('Este campo ainda não foi ativado. Aguarde!');">Funpresp:</span>
+                <span style="padding-left: 40px;" onmouseover="nhpup.popup('Caso tenha aderido à Funpresp na modalidade ativo normal, a contribuição pode ser feita em uma das três alíquotas disponíveis.');">Funpresp:</span>
                 <select name="ddFunp" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
                   <option value="0" selected>
                     Não aderido
@@ -835,6 +836,7 @@
                     8,5%
                   </option>
                 </select>
+                <INPUT TYPE="text" NAME="txFunp" VALUE="R$ 0,00" readonly>
               </p>
             </div>
             <div id="divresults2">
