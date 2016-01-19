@@ -249,8 +249,12 @@ function calcSalario (form) {
     var fungrat = valorFG(parseInt(form.ddFG.value, 10), periodo);    
     var bruto = remuneracao + saude + alimentacao + transporte + creche + fungrat;
     var baseinss = vencimento + urp + qualificacao;
-    if (form.novopss.checked && (baseinss > 4663.75)) {
-      baseinss = 4663.75; //Se for da nova previdencia, o calculo é feito baseado no teto. Funpresp nao suportado atualmente.
+    var tetoinss = 4663.75
+    if (periodo >= 6) {
+      tetoinss = 5189.82
+    } 
+    if (form.novopss.checked && (baseinss > tetoinss)) {
+      baseinss = tetoinss; //Se for da nova previdencia, o calculo é feito baseado no teto. Funpresp nao suportado atualmente.
     } 
     var aliqinss = Math.floor(baseinss*0.11*100)/100;
     var baseirrf = vencimento + urp + qualificacao + ftinsa*vencimento + fungrat + creche - aliqinss;

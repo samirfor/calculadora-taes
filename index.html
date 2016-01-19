@@ -267,10 +267,10 @@
                     <option value="4">
                       Entre 01/2015 e 02/2015
                     </option>
-                    <option value="5" selected>
+                    <option value="5">
                       Entre 03/2015 e 12/2015
                     </option>
-                    <option value="6">
+                    <option value="6" selected>
                       Entre 01/2016 e 07/2016
                     </option>
                     <option value="7">
@@ -410,6 +410,21 @@
                 <span onmouseover="nhpup.popup('Para os sevidores que ingressaram partir de 02/2013, existe um teto no valor base da previdência. Os servidores anteriores a mudança ficaram no regime antigo. Todos podem aderir à previdência complementar do executivo (Funpresp). Veja mais em Carreira.');">
                 <input type="checkbox" name="novopss" value="" onClick="calcSalario(this.form)" checked> Novo regime da Previdência
                 </span>
+                <span style="padding-left: 40px;" onmouseover="nhpup.popup('Este campo ainda não foi ativado. Aguarde!');">Funpresp:</span>
+                <select name="ddFunp" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
+                  <option value="0" selected>
+                    Não aderido
+                  </option>
+                  <option value="0.075">
+                    7,5%
+                  </option>
+                  <option value="0.080">
+                    8%
+                  </option>
+                  <option value="0.085">
+                    8,5%
+                  </option>
+                </select>
               </p>
             </div>
             <div id="divresults1">
@@ -662,10 +677,10 @@
                     <option value="4">
                       Entre 01/2015 e 02/2015
                     </option>
-                    <option value="5" selected>
+                    <option value="5">
                       Entre 03/2015 e 12/2015
-                    </option>
-                    <option value="6">
+                    </optio>n
+                    <option value="6" selected>
                       Entre 01/2016 e 07/2016
                     </option>
                     <option value="7">
@@ -805,6 +820,21 @@
                 <span onmouseover="nhpup.popup('Para os sevidores que ingressaram partir de 02/2013, existe um teto no valor base da previdência. Os servidores anteriores a mudança ficaram no regime antigo. Todos podem aderir à previdência complementar do executivo (Funpresp). Veja mais em Carreira.');">
                 <input type="checkbox" name="novopss" value="" onClick="calcSalario(this.form)" checked> Novo regime da Previdência
                 </span>
+                <span style="padding-left: 40px;" onmouseover="nhpup.popup('Este campo ainda não foi ativado. Aguarde!');">Funpresp:</span>
+                <select name="ddFunp" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
+                  <option value="0" selected>
+                    Não aderido
+                  </option>
+                  <option value="0.075">
+                    7,5%
+                  </option>
+                  <option value="0.080">
+                    8%
+                  </option>
+                  <option value="0.085">
+                    8,5%
+                  </option>
+                </select>
               </p>
             </div>
             <div id="divresults2">
