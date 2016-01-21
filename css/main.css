@@ -125,23 +125,26 @@ textarea {
   margin: 0 auto;
 }
 #divresults1, #divresults2 {  
-  position: absolute;
-  margin: 0 0 40px 600px;
-  border: 1px solid black;    
+  /**position: absolute;*/
+  padding: 0 5px;
   width: 400px;    
   text-align: left;
+  float: right;
+  height: 226px;
+  border: 1px solid black;   
+  margin-top: 9px;
 }
 #divresults1_1, #divresults2_1 {
-    margin-left: 10px;
+    margin-left: 0;
     float: left;
 }
 #divresults1_2, #divresults2_2 {
     margin-left: 10px;
-    float: left;
+    float: right;
 }
 #ddQuali {
   resize: none;
-  width: 160px;
+  width: 200px;
 }
 
 #rodape {
