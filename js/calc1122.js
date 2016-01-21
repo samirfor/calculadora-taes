@@ -42,8 +42,8 @@ function calcfatorpg(i, areadireta) {
 }
         
 function firstload() {
-    updateQuali("myform", 1);
-    updateQuali("myform2", 1);
+    updateQuali(myform, 1);
+    updateQuali(myform2, 1);
 }
         
 function validateGD1(evt, form) {
