@@ -224,8 +224,9 @@ function calcSalario (form) {
         }   
     }
     var ftvb = parseFloat(form.ddClasse.value) + parseFloat(form.ddNivel.value) + parseFloat(form.ddProg.value) - 3;   
-    var ftcarga = form.ddCargaH.value;    
-    var vencimento = Math.floor(form.ddAnuenio.value * base * (Math.pow(ftstep, ftvb)) * ftcarga * 100) / 100; 
+    var ftcarga = form.ddCargaH.value;
+    var vencimento = Math.floor(base * (Math.pow(ftstep, ftvb)) * ftcarga * 100) / 100; 
+    var anuenio = (form.numAnuenio.value/100) * vencimento 
     //var baseurp = Math.round(base * (Math.pow(ftstep, parseFloat(form.ddClasse.value)-1)) * ftcarga * 100) / 100;
     // baseurp no meu contracheque de jan/15 veio sem a progressÃ£o, mas o VB veio com. Se for a regra, usar comentado acima, senÃ£o, apagar baseurp e substituir por vencimento na formula da urp abaixo.
     var alimentacao = 0;
@@ -242,7 +243,7 @@ function calcSalario (form) {
     var ftpg = calcfatorpg(form.ddQuali.value, form.areaquali[0].checked);    
     var urp = (form.removeurp.checked) ? vencimento*0.2605*(1+ftpg) : 0;
     var qualificacao = ftpg*vencimento
-    var remuneracao = vencimento + urp + qualificacao +  Math.floor(ftinsa*vencimento*100)/100;   
+    var remuneracao = vencimento + urp + qualificacao +  Math.floor(ftinsa*vencimento*100)/100 + anuenio;   
     var sintfub = (form.sintfub.checked) ? remuneracao*0.01 : 0;
     var saude = (form.saude.checked) ? valorSaude(remuneracao, parseInt(form.ddIdade.value, 10), periodo) : 0;
     var creche = valorCreche(remuneracao, periodo, form.numCreche.value);  
@@ -295,19 +296,19 @@ function calcSalario (form) {
      
      if (tipo=="inverter"){ 
          
-    var values1 = Array(form1.ddClasse.value, form1.ddProg.value, form1.ddFG.value, form1.ddNivel.value, form1.ddCargaH.value, form1.ddAno.value, form1.ddQuali.value, form1.saude.checked, form1.ddIdade.value, form1.removeurp.checked, form1.trans.checked, form1.gastoTrans.value, form1.alim.checked, form1.ddInsa.value, form1.numCreche.value, form1.sintfub.checked, form1.areaquali[0].checked, form1.areaquali[1].checked, form1.novopss.checked, form1.ddFunp.value);
+    var values1 = Array(form1.ddClasse.value, form1.ddProg.value, form1.ddFG.value, form1.ddNivel.value, form1.ddCargaH.value, form1.ddAno.value, form1.ddQuali.value, form1.saude.checked, form1.ddIdade.value, form1.removeurp.checked, form1.trans.checked, form1.gastoTrans.value, form1.alim.checked, form1.ddInsa.value, form1.numCreche.value, form1.sintfub.checked, form1.areaquali[0].checked, form1.areaquali[1].checked, form1.novopss.checked, form1.ddFunp.value, form1.numAnuenio.value);
          
-    var values2 = Array(form2.ddClasse.value, form2.ddProg.value, form2.ddFG.value, form2.ddNivel.value, form2.ddCargaH.value, form2.ddAno.value, form2.ddQuali.value, form2.saude.checked, form2.ddIdade.value, form2.removeurp.checked, form2.trans.checked, form2.gastoTrans.value, form2.alim.checked, form2.ddInsa.value, form2.numCreche.value, form2.sintfub.checked, form2.areaquali[0].checked, form2.areaquali[1].checked, form2.novopss.checked, form2.ddFunp.value);
+    var values2 = Array(form2.ddClasse.value, form2.ddProg.value, form2.ddFG.value, form2.ddNivel.value, form2.ddCargaH.value, form2.ddAno.value, form2.ddQuali.value, form2.saude.checked, form2.ddIdade.value, form2.removeurp.checked, form2.trans.checked, form2.gastoTrans.value, form2.alim.checked, form2.ddInsa.value, form2.numCreche.value, form2.sintfub.checked, form2.areaquali[0].checked, form2.areaquali[1].checked, form2.novopss.checked, form2.ddFunp.value, form2.numAnuenio.value);
          
      } else if (tipo=="cima") {
          
-    var values2 = Array(form2.ddClasse.value, form2.ddProg.value, form2.ddFG.value, form2.ddNivel.value, form2.ddCargaH.value, form2.ddAno.value, form2.ddQuali.value, form2.saude.checked, form2.ddIdade.value, form2.removeurp.checked, form2.trans.checked, form2.gastoTrans.value, form2.alim.checked, form2.ddInsa.value, form2.numCreche.value, form2.sintfub.checked, form2.areaquali[0].checked, form2.areaquali[1].checked, form2.novopss.checked, form2.ddFunp.value);
+    var values2 = Array(form2.ddClasse.value, form2.ddProg.value, form2.ddFG.value, form2.ddNivel.value, form2.ddCargaH.value, form2.ddAno.value, form2.ddQuali.value, form2.saude.checked, form2.ddIdade.value, form2.removeurp.checked, form2.trans.checked, form2.gastoTrans.value, form2.alim.checked, form2.ddInsa.value, form2.numCreche.value, form2.sintfub.checked, form2.areaquali[0].checked, form2.areaquali[1].checked, form2.novopss.checked, form2.ddFunp.value, form2.numAnuenio.value);
          
     var values1 = values2;
          
      } else {
          
-    var values1 = Array(form1.ddClasse.value, form1.ddProg.value, form1.ddFG.value, form1.ddNivel.value, form1.ddCargaH.value, form1.ddAno.value, form1.ddQuali.value, form1.saude.checked, form1.ddIdade.value, form1.removeurp.checked, form1.trans.checked, form1.gastoTrans.value, form1.alim.checked, form1.ddInsa.value, form1.numCreche.value, form1.sintfub.checked, form1.areaquali[0].checked, form1.areaquali[1].checked, form1.novopss.checked, form1.ddFunp.value);
+    var values1 = Array(form1.ddClasse.value, form1.ddProg.value, form1.ddFG.value, form1.ddNivel.value, form1.ddCargaH.value, form1.ddAno.value, form1.ddQuali.value, form1.saude.checked, form1.ddIdade.value, form1.removeurp.checked, form1.trans.checked, form1.gastoTrans.value, form1.alim.checked, form1.ddInsa.value, form1.numCreche.value, form1.sintfub.checked, form1.areaquali[0].checked, form1.areaquali[1].checked, form1.novopss.checked, form1.ddFunp.value, form1.numAnuenio.value);
          
     var values2 = values1 ;        
      }
@@ -332,6 +333,7 @@ function calcSalario (form) {
     form1.areaquali[1].checked = values2[17]
     form1.novopss.checked = values2[18]
     form1.ddFunp.value = values2[19]
+    form1.numAnuenio.value = values2[20]
     
     form2.ddClasse.value = values1[0]
     form2.ddProg.value = values1[1]
@@ -353,6 +355,7 @@ function calcSalario (form) {
     form2.areaquali[1].checked = values1[17]
     form2.novopss.checked = values1[18]
     form2.ddFunp.value = values1[19]
+    form2.numAnuenio.value = values1[20]
     
     updateQuali(form1, values2[0])
     updateQuali(form2, values1[0])
