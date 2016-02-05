@@ -189,8 +189,6 @@ function valorFG(FG, periodo) {
 }
 
 function calcSalario (form) {      
-    //var ftstep = 1.036;
-    //var base = 1086.32;
     var periodo = parseInt(form.ddAno.value, 10);
     if (form.medico.checked) {
         ftstep = 1.038;
@@ -217,11 +215,20 @@ function calcSalario (form) {
             base = 1197.67;
         } else if (periodo == 7) {
             ftstep = 1.038;
-            base = 1197.67*1.055;
+            base = 1263.54;
         } else if (periodo == 8) {
             ftstep = 1.039;
-            base = 1197.67*1.055*1.05;
-        }   
+            base = 1326.72;
+        } else if (periodo == 9) {
+            ftstep = 1.0405;
+            base = 1535.84;
+        } else if (periodo == 10) {
+            ftstep = 1.043;
+            base = 1960.17;
+        } else if (periodo == 11) {
+            ftstep = 1.0455;
+            base = 2501.73;
+        }        
     }
     var ftvb = parseFloat(form.ddClasse.value) + parseFloat(form.ddNivel.value) + parseFloat(form.ddProg.value) - 3;   
     var ftcarga = form.ddCargaH.value;
@@ -255,11 +262,39 @@ function calcSalario (form) {
       tetoinss = 5189.82
     } 
     if (form.novopss.checked && (baseinss > tetoinss)) {
-      baseinss = tetoinss; //Se for da nova previdencia, o calculo é feito baseado no teto. Funpresp nao suportado atualmente.
+      baseinss = tetoinss; //Se for da nova previdencia, o calculo é feito baseado no teto. 
     } 
     var aliqinss = Math.floor(baseinss*0.11*100)/100;
-    var basefunp = vencimento + urp + qualificacao - tetoinss;
-    var aliqfunp = basefunp*form.ddFunp.value;
+    
+    var aliqfunp = 0
+    
+    if (form.funp_ad.value == "sim") {
+      if (baseinss == tetoinss) { //Só pode ser ativo normal quem entrou depois de 02/2013 e recebe acima do teto da previdência
+        var basefunp = vencimento + urp + qualificacao - tetoinss;
+        aliqfunp = basefunp*form.ddFunp.value;
+        if (form.name == "myform") {
+          document.getElementById("funp_plano_norm1").checked = true;
+          document.getElementById("ddFunp1").disabled = false;
+          document.getElementById("numFunpAlt1").disabled = true;
+        }  else {
+          document.getElementById("funp_plano_norm2").checked = true;
+          document.getElementById("ddFunp2").disabled = false;
+          document.getElementById("numFunpAlt2").disabled = true;
+        }
+      } else {
+        aliqfunp = form.numFunpAlt.value
+        if (form.name == "myform") {
+          document.getElementById("funp_plano_alt1").checked = true;
+          document.getElementById("ddFunp1").disabled = true;
+          document.getElementById("numFunpAlt1").disabled = false;
+        }  else {
+          document.getElementById("funp_plano_alt2").checked = true;
+          document.getElementById("ddFunp2").disabled = true;
+          document.getElementById("numFunpAlt2").disabled = false;
+        }
+      }
+    }
+    
     var baseirrf = vencimento + urp + qualificacao + ftinsa*vencimento + fungrat + creche - aliqinss - aliqfunp;
     var aliqirrf = valorIRRF(baseirrf, periodo);             
     
@@ -296,19 +331,19 @@ function calcSalario (form) {
      
      if (tipo=="inverter"){ 
          
-    var values1 = Array(form1.ddClasse.value, form1.ddProg.value, form1.ddFG.value, form1.ddNivel.value, form1.ddCargaH.value, form1.ddAno.value, form1.ddQuali.value, form1.saude.checked, form1.ddIdade.value, form1.removeurp.checked, form1.trans.checked, form1.gastoTrans.value, form1.alim.checked, form1.ddInsa.value, form1.numCreche.value, form1.sintfub.checked, form1.areaquali[0].checked, form1.areaquali[1].checked, form1.novopss.checked, form1.ddFunp.value, form1.numAnuenio.value);
+    var values1 = Array(form1.ddClasse.value, form1.ddProg.value, form1.ddFG.value, form1.ddNivel.value, form1.ddCargaH.value, form1.ddAno.value, form1.ddQuali.value, form1.saude.checked, form1.ddIdade.value, form1.removeurp.checked, form1.trans.checked, form1.gastoTrans.value, form1.alim.checked, form1.ddInsa.value, form1.numCreche.value, form1.sintfub.checked, form1.areaquali[0].checked, form1.areaquali[1].checked, form1.novopss.checked, form1.ddFunp.value, form1.numAnuenio.value, form1.funp_ad.value, form1.numFunpAlt.value);
          
-    var values2 = Array(form2.ddClasse.value, form2.ddProg.value, form2.ddFG.value, form2.ddNivel.value, form2.ddCargaH.value, form2.ddAno.value, form2.ddQuali.value, form2.saude.checked, form2.ddIdade.value, form2.removeurp.checked, form2.trans.checked, form2.gastoTrans.value, form2.alim.checked, form2.ddInsa.value, form2.numCreche.value, form2.sintfub.checked, form2.areaquali[0].checked, form2.areaquali[1].checked, form2.novopss.checked, form2.ddFunp.value, form2.numAnuenio.value);
+    var values2 = Array(form2.ddClasse.value, form2.ddProg.value, form2.ddFG.value, form2.ddNivel.value, form2.ddCargaH.value, form2.ddAno.value, form2.ddQuali.value, form2.saude.checked, form2.ddIdade.value, form2.removeurp.checked, form2.trans.checked, form2.gastoTrans.value, form2.alim.checked, form2.ddInsa.value, form2.numCreche.value, form2.sintfub.checked, form2.areaquali[0].checked, form2.areaquali[1].checked, form2.novopss.checked, form2.ddFunp.value, form2.numAnuenio.value, form2.funp_ad.value, form2.numFunpAlt.value);
          
      } else if (tipo=="cima") {
          
-    var values2 = Array(form2.ddClasse.value, form2.ddProg.value, form2.ddFG.value, form2.ddNivel.value, form2.ddCargaH.value, form2.ddAno.value, form2.ddQuali.value, form2.saude.checked, form2.ddIdade.value, form2.removeurp.checked, form2.trans.checked, form2.gastoTrans.value, form2.alim.checked, form2.ddInsa.value, form2.numCreche.value, form2.sintfub.checked, form2.areaquali[0].checked, form2.areaquali[1].checked, form2.novopss.checked, form2.ddFunp.value, form2.numAnuenio.value);
+    var values2 = Array(form2.ddClasse.value, form2.ddProg.value, form2.ddFG.value, form2.ddNivel.value, form2.ddCargaH.value, form2.ddAno.value, form2.ddQuali.value, form2.saude.checked, form2.ddIdade.value, form2.removeurp.checked, form2.trans.checked, form2.gastoTrans.value, form2.alim.checked, form2.ddInsa.value, form2.numCreche.value, form2.sintfub.checked, form2.areaquali[0].checked, form2.areaquali[1].checked, form2.novopss.checked, form2.ddFunp.value, form2.numAnuenio.value, form2.funp_ad.value, form2.numFunpAlt.value);
          
     var values1 = values2;
          
      } else {
          
-    var values1 = Array(form1.ddClasse.value, form1.ddProg.value, form1.ddFG.value, form1.ddNivel.value, form1.ddCargaH.value, form1.ddAno.value, form1.ddQuali.value, form1.saude.checked, form1.ddIdade.value, form1.removeurp.checked, form1.trans.checked, form1.gastoTrans.value, form1.alim.checked, form1.ddInsa.value, form1.numCreche.value, form1.sintfub.checked, form1.areaquali[0].checked, form1.areaquali[1].checked, form1.novopss.checked, form1.ddFunp.value, form1.numAnuenio.value);
+    var values1 = Array(form1.ddClasse.value, form1.ddProg.value, form1.ddFG.value, form1.ddNivel.value, form1.ddCargaH.value, form1.ddAno.value, form1.ddQuali.value, form1.saude.checked, form1.ddIdade.value, form1.removeurp.checked, form1.trans.checked, form1.gastoTrans.value, form1.alim.checked, form1.ddInsa.value, form1.numCreche.value, form1.sintfub.checked, form1.areaquali[0].checked, form1.areaquali[1].checked, form1.novopss.checked, form1.ddFunp.value, form1.numAnuenio.value, form1.funp_ad.value, form1.numFunpAlt.value);
          
     var values2 = values1 ;        
      }
@@ -334,6 +369,8 @@ function calcSalario (form) {
     form1.novopss.checked = values2[18]
     form1.ddFunp.value = values2[19]
     form1.numAnuenio.value = values2[20]
+    form1.funp_ad.value = values2[21]
+    form1.numFunpAlt.value = values2[22]
     
     form2.ddClasse.value = values1[0]
     form2.ddProg.value = values1[1]
@@ -356,6 +393,8 @@ function calcSalario (form) {
     form2.novopss.checked = values1[18]
     form2.ddFunp.value = values1[19]
     form2.numAnuenio.value = values1[20]
+    form2.funp_ad.value = values1[21]
+    form2.numFunpAlt.value = values1[22]
     
     updateQuali(form1, values2[0])
     updateQuali(form2, values1[0])

@@ -81,6 +81,7 @@
               <ul class="tabs-menu1">
                 <li class="current"><a href="#tab-carreira1">Carreira</a></li>
                 <li><a href="#tab-ad1">Adicionais e Auxílios</a></li>
+                <li><a href="#tab-prev1">Previdência</a></li>
               </ul>
               <div class="tab">
                 <div id="tab-carreira1" class="tab-content1">
@@ -113,8 +114,18 @@
                       <option value="8">
                         Após 01/2017
                       </option>
+                      <option value="9">
+                        2020 (Extrapolado)
+                      </option>
+                      <option value="10">
+                        2025 (Extrapolado)
+                      </option>
+                      <option value="11">
+                        2030 (Extrapolado)
+                      </option>
                     </select>
                   </span>
+                  <small>clique <a href="carreira.html#extrap" target="_blank">aqui</a> para detalhes sobre a extrapolação</small>
                   </p> 
                 <p>
                   <span onmouseover="nhpup.popup('A classe é definida pela exigência de escolaridade do cargo.');">
@@ -402,27 +413,48 @@
                   <INPUT TYPE="text" NAME="txsintfub" VALUE="R$ 0,00" readonly>
                   </span>
                   </p>
-                  <p>
+                  
+              </div>
+              <div id="tab-prev1" class="tab-content1">
+              <p>
                   <span onmouseover="nhpup.popup('Para os sevidores que ingressaram partir de 02/2013, existe um teto no valor base da previdência. Os servidores anteriores a mudança ficaram no regime antigo. Todos podem aderir à previdência complementar do executivo (Funpresp). Veja mais em Carreira.');">
                   <input type="checkbox" name="novopss" value="" onClick="calcSalario(this.form)" checked> Novo regime da Previdência
                   </span>
-                  <span style="padding-left: 40px;" onmouseover="nhpup.popup('Caso tenha aderido à Funpresp na modalidade ativo normal, a contribuição pode ser feita em uma das três alíquotas disponíveis.');">Funpresp:</span>
-                  <select name="ddFunp" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
-                    <option value="0" selected>
-                      Não aderido
-                    </option>
-                    <option value="0.075">
-                      7,5%
-                    </option>
-                    <option value="0.080">
-                      8%
-                    </option>
-                    <option value="0.085">
-                      8,5%
-                    </option>
-                  </select>
+              </p>
+              <p>
+              <br>
+                  <span onmouseover="nhpup.popup('Selecione Sim e então defina a alíquota ou a participação, caso tenha aderido à Funpresp.');">
+                    Funpresp:</span>
                   <INPUT TYPE="text" NAME="txFunp" VALUE="R$ 0,00" readonly>
-                  </p>
+                   (o tipo de participação é definido automaticamente)
+              </p>
+              <p>
+                Aderido: 
+                Não <input type="radio" name="funp_ad" value="nao" checked onClick="calcSalario(this.form)">
+                Sim <input type="radio" name="funp_ad" value="sim" onClick="calcSalario(this.form)">
+              </p>
+              <p>
+                <input type="radio" id="funp_plano_norm1" name="funp_plano" value="normal" onClick="calcSalario(this.form)" disabled>
+                <span onmouseover="nhpup.popup('Caso tenha aderido à Funpresp na modalidade ativo normal, a contribuição pode ser feita em uma das três alíquotas disponíveis.');">
+                  Ativo normal. Alíquota:
+                </span>
+                <select id = "ddFunp1" name="ddFunp" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
+                  <option value="0.075">
+                    7,5%
+                  </option>
+                  <option value="0.080">
+                    8%
+                  </option>
+                  <option value="0.085">
+                    8,5%
+                  </option>
+                </select>
+              </p>
+              <p>
+                <input type="radio" id="funp_plano_alt1" name="funp_plano" value="alt" onClick="calcSalario(this.form)" disabled>
+                Ativo alternativo. Participação: R$
+                <input type="number" id="numFunpAlt1" name="numFunpAlt" min="78" max="2000" step="1" value="200" style="width:60px" onClick="calcSalario(this.form)">
+              </p>
               </div>
             </div>
             </div>
@@ -494,6 +526,7 @@
               <ul class="tabs-menu2">
                 <li class="current"><a href="#tab-carreira2">Carreira</a></li>
                 <li><a href="#tab-ad2">Adicionais e Auxílios</a></li>
+                <li><a href="#tab-prev2">Previdência</a></li>
               </ul>
               <div class="tab">
                 <div id="tab-carreira2" class="tab-content2">
@@ -526,8 +559,18 @@
                       <option value="8">
                         Após 01/2017
                       </option>
+                      <option value="9">
+                        2020 (Extrapolado)
+                      </option>
+                      <option value="10">
+                        2025 (Extrapolado)
+                      </option>
+                      <option value="11">
+                        2030 (Extrapolado)
+                      </option>
                     </select>
                   </span>
+                  <small>clique <a href="carreira.html#extrap" target="_blank">aqui</a> para detalhes sobre a extrapolação</small>
                   </p> 
                 <p>
                   <span onmouseover="nhpup.popup('A classe é definida pela exigência de escolaridade do cargo.');">
@@ -815,27 +858,47 @@
                   <INPUT TYPE="text" NAME="txsintfub" VALUE="R$ 0,00" readonly>
                   </span>
                   </p>
-                  <p>
+              </div>
+              <div id="tab-prev2" class="tab-content2">
+              <p>
                   <span onmouseover="nhpup.popup('Para os sevidores que ingressaram partir de 02/2013, existe um teto no valor base da previdência. Os servidores anteriores a mudança ficaram no regime antigo. Todos podem aderir à previdência complementar do executivo (Funpresp). Veja mais em Carreira.');">
                   <input type="checkbox" name="novopss" value="" onClick="calcSalario(this.form)" checked> Novo regime da Previdência
                   </span>
-                  <span style="padding-left: 40px;" onmouseover="nhpup.popup('Caso tenha aderido à Funpresp na modalidade ativo normal, a contribuição pode ser feita em uma das três alíquotas disponíveis.');">Funpresp:</span>
-                  <select name="ddFunp" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
-                    <option value="0" selected>
-                      Não aderido
-                    </option>
-                    <option value="0.075">
-                      7,5%
-                    </option>
-                    <option value="0.080">
-                      8%
-                    </option>
-                    <option value="0.085">
-                      8,5%
-                    </option>
-                  </select>
+              </p>
+              <p>
+              <br>
+                  <span onmouseover="nhpup.popup('Selecione Sim e então defina a alíquota ou a participação, caso tenha aderido à Funpresp.');">
+                    Funpresp:</span>
                   <INPUT TYPE="text" NAME="txFunp" VALUE="R$ 0,00" readonly>
-                  </p>
+                   (o tipo de participação é definido automaticamente)
+              </p>
+              <p>
+                Aderido: 
+                Não <input type="radio" name="funp_ad" value="nao" checked onClick="calcSalario(this.form)">
+                Sim <input type="radio" name="funp_ad" value="sim" onClick="calcSalario(this.form)">
+              </p>
+              <p>
+                <input type="radio" id="funp_plano_norm2" name="funp_plano" value="normal" onClick="calcSalario(this.form)" disabled>
+                <span onmouseover="nhpup.popup('Caso tenha aderido à Funpresp na modalidade ativo normal, a contribuição pode ser feita em uma das três alíquotas disponíveis.');">
+                  Ativo normal. Alíquota:
+                </span>
+                <select id="ddFunp2" name="ddFunp" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
+                  <option value="0.075">
+                    7,5%
+                  </option>
+                  <option value="0.080">
+                    8%
+                  </option>
+                  <option value="0.085">
+                    8,5%
+                  </option>
+                </select>
+              </p>
+              <p>
+                <input type="radio" id="funp_plano_alt2" name="funp_plano" value="alt" onClick="calcSalario(this.form)" disabled>
+                Ativo alternativo. Participação: R$
+                <input type="number"  id="numFunpAlt2" name="numFunpAlt" min="78" max="2000" step="1" value="200" style="width:60px" onClick="calcSalario(this.form)">
+              </p>
               </div>
             </div>
             </div>
