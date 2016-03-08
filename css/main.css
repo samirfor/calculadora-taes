@@ -199,6 +199,21 @@ a:hover {
     color: #888888;
 }
 
+ol {
+  counter-reset: item;
+  font-size: 14px;
+}
+
+li {
+  display: block
+}
+
+li:before {
+  content: counters(item, ".") ". "; 
+  counter-increment: item 
+  
+}
+
 #link_header{
     display: block;
 }
@@ -241,7 +256,8 @@ a:hover {
     cursor: pointer;
 }
 
-img.center {    
+.centerImg {    
+    display: block;
     margin-left: auto;
     margin-right: auto;    
 }
