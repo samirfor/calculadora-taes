@@ -104,10 +104,30 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+.mainTitle {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.titleHolder {
+  height: 45px;
+}
+
+.fb-like {
+  float: left; 
+  width: 49px; 
+  height: 70px; 
+  margin-top: -20px;
+  margin-left: 10px;
+}
+
 #cbajuda {
     float: right;    
     position: relative;
-    top: -40px;
+    top: 20px;
     margin-right: 5px;
 }
 
@@ -204,11 +224,11 @@ ol {
   font-size: 14px;
 }
 
-li {
+.sumario li {
   display: block
 }
 
-li:before {
+.sumario li:before {
   content: counters(item, ".") ". "; 
   counter-increment: item 
   
