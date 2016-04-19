@@ -295,8 +295,7 @@ function calcSalario (form) {
       }
     }
     
-    var baseirrf = remuneracao - aliqinss - aliqfunp
-    //vencimento + urp + qualificacao + ftinsa*vencimento + fungrat + creche - aliqinss - aliqfunp;
+    var baseirrf = vencimento + urp + qualificacao + ftinsa*vencimento + fungrat + creche - aliqinss - aliqfunp;
     var aliqirrf = valorIRRF(baseirrf, periodo);             
     
     var salario = Math.round((bruto - aliqirrf - aliqinss - aliqfunp - sintfub)*100)/100;
