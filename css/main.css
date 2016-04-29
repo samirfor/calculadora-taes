@@ -284,7 +284,7 @@ ol {
 
 
 .fb_iframe_widget_lift {
-  z-index: 6;
+  z-index: 6 !important;
 }
 
 
