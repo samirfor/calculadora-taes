@@ -132,7 +132,7 @@ textarea {
 }
 
 #maindiv, #maindiv2, #maindiv3 {
-    overflow: hidden;
+    /*overflow: hidden;*/
     width: 1000px;
     /*padding-left: 30px;  */
     margin: 0 auto;
@@ -152,7 +152,7 @@ textarea {
   float: right;
   height: 226px;
   border: 1px solid black;   
-  margin-top: 9px;
+  margin-top: 31px;
 }
 #divresults1_1, #divresults2_1 {
     margin-left: 0;
