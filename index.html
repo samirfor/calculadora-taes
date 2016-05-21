@@ -33,7 +33,7 @@
           </script>
         <script src="js/plugins.js"></script> -->
         <script src="js/main.js"></script>
-        <script src="js/compressed.js"></script>
+        <script src="js/calc1122.js"></script>
         <script type="text/javascript" src="js/nhpup_1.1.js"></script>
       </head>
       <body onLoad="firstload();">
@@ -351,46 +351,160 @@
                   </p>
                   </div>
                   <div id="tab-ad1" class="tab-content1">
-                    <p>
+                  <p>
                   <span onmouseover="nhpup.popup('O reembolso por contrato de Plano de Saúde particular segue uma tabela definida pelo Governo Federal e depende do salário bruto e da idade do servidor.');">
                     <input type="checkbox" name="saude" value="Saude" onClick="calcSalario(this.form)">
-                    Saúde - Idade:                                        
+                    Saúde Suplementar - Idade do servidor:                                        
                     <select name="ddIdade" id="ddIdade" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
-                      onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
-                      <option value="0" selected>
-                        0-18
+                      onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)" style="width: 70px;">
+                      <option value="0">
+                        0-18 anos
                       </option>
                       <option value="1">
-                        19-23
+                        19-23 anos
                       </option>
                       <option value="2">
-                        24-28
+                        24-28 anos
                       </option>
                       <option value="3">
-                        29-33
+                        29-33 anos
                       </option>
                       <option value="4">
-                        34-38
+                        34-38 anos
                       </option>
                       <option value="5">
-                        39-43
+                        39-43 anos
                       </option>
                       <option value="6">
-                        44-48
+                        44-48 anos
                       </option>
                       <option value="7">
-                        49-53
+                        49-53 anos
                       </option>
                       <option value="8">
-                        54-58
+                        54-58 anos
                       </option>
                       <option value="9">
-                        59+
+                        59+ anos
                       </option>
                     </select>
                     <INPUT TYPE="text" NAME="txSaude" VALUE="0" readonly>
                   </span>
                   </p>
+                  <p style="margin: 0;">
+                    Dependente 1:
+                    <select name="ddIdadeDep1" id="ddIdadeDep1" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
+                      onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)" style="width: 70px;">
+                      <option value="1000" selected>
+                        Não
+                      </option>
+                      <option value="0">
+                        0-18 anos
+                      </option>
+                      <option value="1">
+                        19-23 anos
+                      </option>
+                      <option value="2">
+                        24-28 anos
+                      </option>
+                      <option value="3">
+                        29-33 anos
+                      </option>
+                      <option value="4">
+                        34-38 anos
+                      </option>
+                      <option value="5">
+                        39-43 anos
+                      </option>
+                      <option value="6">
+                        44-48 anos
+                      </option>
+                      <option value="7">
+                        49-53 anos
+                      </option>
+                      <option value="8">
+                        54-58 anos
+                      </option>
+                      <option value="9">
+                        59+ anos
+                      </option>
+                    </select>
+                    Dependente 2:
+                    <select name="ddIdadeDep2" id="ddIdadeDep2" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
+                      onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)" style="width: 70px;">
+                      <option value="1000" selected>
+                        Não
+                      </option>
+                      <option value="0">
+                        0-18 anos
+                      </option>
+                      <option value="1">
+                        19-23 anos
+                      </option>
+                      <option value="2">
+                        24-28 anos
+                      </option>
+                      <option value="3">
+                        29-33 anos
+                      </option>
+                      <option value="4">
+                        34-38 anos
+                      </option>
+                      <option value="5">
+                        39-43 anos
+                      </option>
+                      <option value="6">
+                        44-48 anos
+                      </option>
+                      <option value="7">
+                        49-53 anos
+                      </option>
+                      <option value="8">
+                        54-58 anos
+                      </option>
+                      <option value="9">
+                        59+ anos
+                      </option>
+                    </select>
+                    Dependente 3:
+                    <select name="ddIdadeDep3" id="ddIdadeDep3" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
+                      onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)" style="width: 70px;">
+                      <option value="1000" selected>
+                        Não
+                      </option>
+                      <option value="0">
+                        0-18 anos
+                      </option>
+                      <option value="1">
+                        19-23 anos
+                      </option>
+                      <option value="2">
+                        24-28 anos
+                      </option>
+                      <option value="3">
+                        29-33 anos
+                      </option>
+                      <option value="4">
+                        34-38 anos
+                      </option>
+                      <option value="5">
+                        39-43 anos
+                      </option>
+                      <option value="6">
+                        44-48 anos
+                      </option>
+                      <option value="7">
+                        49-53 anos
+                      </option>
+                      <option value="8">
+                        54-58 anos
+                      </option>
+                      <option value="9">
+                        59+ anos
+                      </option>
+                    </select>
+                  </p>
+                  <hr class="hrsaude">
                   <p>
                   <span onmouseover="nhpup.popup('O valor do transporte é calculado com base no gasto diário do servidor (arredondado para cima em steps de R$ 0,2). Caso receba auxílio-alimentação, valores referentes a saída para almoço não devem ser considerados. Além disso, o valor sofre um desconto de 6% do vencimento proporcional a 22 dias.');">
                   <input type="checkbox" name="trans" value="Trans" onClick="calcSalario(this.form)">
@@ -800,46 +914,160 @@
                   </p>
                   </div>
                   <div id="tab-ad2" class="tab-content2">
-                    <p>
+                                    <p>
                   <span onmouseover="nhpup.popup('O reembolso por contrato de Plano de Saúde particular segue uma tabela definida pelo Governo Federal e depende do salário bruto e da idade do servidor.');">
                     <input type="checkbox" name="saude" value="Saude" onClick="calcSalario(this.form)">
-                    Saúde - Idade:                                        
+                    Saúde Suplementar - Idade do servidor:                                        
                     <select name="ddIdade" id="ddIdade" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
-                      onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
-                      <option value="0" selected>
-                        0-18
+                      onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)" style="width: 70px;">
+                      <option value="0">
+                        0-18 anos
                       </option>
                       <option value="1">
-                        19-23
+                        19-23 anos
                       </option>
                       <option value="2">
-                        24-28
+                        24-28 anos
                       </option>
                       <option value="3">
-                        29-33
+                        29-33 anos
                       </option>
                       <option value="4">
-                        34-38
+                        34-38 anos
                       </option>
                       <option value="5">
-                        39-43
+                        39-43 anos
                       </option>
                       <option value="6">
-                        44-48
+                        44-48 anos
                       </option>
                       <option value="7">
-                        49-53
+                        49-53 anos
                       </option>
                       <option value="8">
-                        54-58
+                        54-58 anos
                       </option>
                       <option value="9">
-                        59+
+                        59+ anos
                       </option>
                     </select>
                     <INPUT TYPE="text" NAME="txSaude" VALUE="0" readonly>
                   </span>
                   </p>
+                  <p style="margin: 0;">
+                    Dependente 1:
+                    <select name="ddIdadeDep1" id="ddIdadeDep1" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
+                      onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)" style="width: 70px;">
+                      <option value="1000" selected>
+                        Não
+                      </option>
+                      <option value="0">
+                        0-18 anos
+                      </option>
+                      <option value="1">
+                        19-23 anos
+                      </option>
+                      <option value="2">
+                        24-28 anos
+                      </option>
+                      <option value="3">
+                        29-33 anos
+                      </option>
+                      <option value="4">
+                        34-38 anos
+                      </option>
+                      <option value="5">
+                        39-43 anos
+                      </option>
+                      <option value="6">
+                        44-48 anos
+                      </option>
+                      <option value="7">
+                        49-53 anos
+                      </option>
+                      <option value="8">
+                        54-58 anos
+                      </option>
+                      <option value="9">
+                        59+ anos
+                      </option>
+                    </select>
+                    Dependente 2:
+                    <select name="ddIdadeDep2" id="ddIdadeDep2" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
+                      onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)" style="width: 70px;">
+                      <option value="1000" selected>
+                        Não
+                      </option>
+                      <option value="0">
+                        0-18 anos
+                      </option>
+                      <option value="1">
+                        19-23 anos
+                      </option>
+                      <option value="2">
+                        24-28 anos
+                      </option>
+                      <option value="3">
+                        29-33 anos
+                      </option>
+                      <option value="4">
+                        34-38 anos
+                      </option>
+                      <option value="5">
+                        39-43 anos
+                      </option>
+                      <option value="6">
+                        44-48 anos
+                      </option>
+                      <option value="7">
+                        49-53 anos
+                      </option>
+                      <option value="8">
+                        54-58 anos
+                      </option>
+                      <option value="9">
+                        59+ anos
+                      </option>
+                    </select>
+                    Dependente 3:
+                    <select name="ddIdadeDep3" id="ddIdadeDep3" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
+                      onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)" style="width: 70px;">
+                      <option value="1000" selected>
+                        Não
+                      </option>
+                      <option value="0">
+                        0-18 anos
+                      </option>
+                      <option value="1">
+                        19-23 anos
+                      </option>
+                      <option value="2">
+                        24-28 anos
+                      </option>
+                      <option value="3">
+                        29-33 anos
+                      </option>
+                      <option value="4">
+                        34-38 anos
+                      </option>
+                      <option value="5">
+                        39-43 anos
+                      </option>
+                      <option value="6">
+                        44-48 anos
+                      </option>
+                      <option value="7">
+                        49-53 anos
+                      </option>
+                      <option value="8">
+                        54-58 anos
+                      </option>
+                      <option value="9">
+                        59+ anos
+                      </option>
+                    </select>
+                  </p>
+                  <hr class="hrsaude">
                   <p>
                   <span onmouseover="nhpup.popup('O valor do transporte é calculado com base no gasto diário do servidor (arredondado para cima em steps de R$ 0,2). Caso receba auxílio-alimentação, valores referentes a saída para almoço não devem ser considerados. Além disso, o valor sofre um desconto de 6% do vencimento proporcional a 22 dias.');">
                   <input type="checkbox" name="trans" value="Trans" onClick="calcSalario(this.form)">

@@ -190,6 +190,11 @@ textarea {
   width: 42px;   
 }
 
+.hrsaude {
+  width: 570px;
+  margin: 0.5em 0 1.5em 0;
+}
+
 hr {
   width: 1050px;   
   margin: 0 auto;
