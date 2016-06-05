@@ -169,7 +169,7 @@
                       </option>
                     </select>
                   </span>
-                  <span style="padding-left: 25px;" onmouseover="nhpup.popup('A Progressão por capacitação profissional varia em 4 níveis e pode ser obtida pela realização de cursos.');">
+                  <span style="padding-left: 50px;" onmouseover="nhpup.popup('A Progressão por capacitação profissional varia em 4 níveis e pode ser obtida pela realização de cursos.');">
                     Nível:
                     <select name="ddProg" id="ddProg" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
                       onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
@@ -187,45 +187,7 @@
                       </option>
                     </select>
                   </span>
-                  <span style="padding-left: 25px;">
-                    FG:
-                    <select name="ddFG" id="ddFG" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
-                      onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
-                      <option value="0" selected>
-                        Não
-                      </option>
-                      <option value="1">
-                        FG-1
-                      </option>
-                      <option value="2">
-                        FG-2
-                      </option>
-                      <option value="3">
-                        FG-3
-                      </option>
-                      <option value="4">
-                        FG-4
-                      </option>
-                      <option value="5">
-                        FG-5
-                      </option>
-                      <option value="6">
-                        FG-6
-                      </option>
-                      <option value="7">
-                        FG-7
-                      </option>
-                      <option value="8">
-                        FG-8
-                      </option>
-                      <option value="9">
-                        FG-9
-                      </option>
-                    </select>
-                  </span>
-                  </p>
-                  <p>
-                  <span onmouseover="nhpup.popup('A Progressão por mérito profissional é relativa ao tempo do servidor no cargo, podendo ser avançada a cada 18 meses.');">
+                  <span style="padding-left: 50px;" onmouseover="nhpup.popup('A Progressão por mérito profissional é relativa ao tempo do servidor no cargo, podendo ser avançada a cada 18 meses.');">
                     Progressão:                                        
                     <select name="ddNivel" id="ddNivel" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
                       <option value="1" selected>
@@ -278,7 +240,74 @@
                       </option>
                     </select>
                   </span>
-                  <span style="padding-left: 25px;">Carga horária:</span>
+                  </p>
+                  <p>
+                  <span onmouseover="nhpup.popup('O adicional por Função Gratificada é pago a servidores que exercem cargos de chefia.');">
+                    FG:
+                    <select name="ddFG" id="ddFG" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
+                      onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
+                      <option value="0" selected>
+                        Não
+                      </option>
+                      <option value="1">
+                        FG-1
+                      </option>
+                      <option value="2">
+                        FG-2
+                      </option>
+                      <option value="3">
+                        FG-3
+                      </option>
+                      <option value="4">
+                        FG-4
+                      </option>
+                      <option value="5">
+                        FG-5
+                      </option>
+                      <option value="6">
+                        FG-6
+                      </option>
+                      <option value="7">
+                        FG-7
+                      </option>
+                      <option value="8">
+                        FG-8
+                      </option>
+                      <option value="9">
+                        FG-9
+                      </option>
+                    </select>
+                    <input type="text" NAME="txFG" value="R$ 0,00" readonly>
+                  </span>
+                  <span style="padding-left: 25px;" onmouseover="nhpup.popup('O ocupante de Cargo de Direção pode receber o valor integral como substituto à remuneração ou como adicional, no valor de 60% do valor integral.');">
+                    CD:
+                    <select name="ddCD" id="ddCD" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
+                      onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
+                      <option value="0" selected>
+                        Não
+                      </option>
+                      <option value="1">
+                        CD-1
+                      </option>
+                      <option value="2">
+                        CD-2
+                      </option>
+                      <option value="3">
+                        CD-3
+                      </option>
+                      <option value="4">
+                        CD-4
+                      </option>
+                    </select>
+                    <input type="radio" name="rdCD" value="0.6" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
+                      onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)" checked>60%
+                    <input type="radio" name="rdCD" value="1" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
+                      onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">100%
+                  <input type="text" NAME="txCD" value="R$ 0,00" readonly>
+                  </span>
+                  </p>
+                  <p>
+                  <span>Carga horária:</span>
                   <select name="ddCargaH" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
                     <option value="1" selected>
                       40 horas
@@ -346,7 +375,7 @@
                     <input type="number" name="numDepIRRF" min="0" max="20" step="1" value="0"
                     style="width: 35px;" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form);"
                     onKeyUp="calcSalario(this.form);">
-                    <INPUT TYPE="text" NAME="txDepIRRF" VALUE="R$ 0,00" readonly>
+                    <input type="text" NAME="txDepIRRF" value="R$ 0,00" readonly>
                   </span>
                   </p>
                   </div>
@@ -512,14 +541,16 @@
                   <input type="number" name="gastoTrans" min="2" max="50" step="0.2" value="8"
                     style="width: 50px;" onClick="calcSalario(this.form)" onKeyPress="validateGD1(event, this.form);"
                     onKeyUp="validateGD2(this.form);">
-                  <INPUT TYPE="text" name="txTrans" id="txTrans" value="0" readonly>
+                  <input type="text" style="width:75px;" name="txTrans" id="txTrans" value="0" readonly>
                   </span>
+                  <span style="padding-left: 10px">
+                  <input type="checkbox" name="alim" value="Alim" onClick="calcSalario(this.form)" checked> Alimentação:
+                  <input style="width:75px;" type="text" name="txAlim" id="txAlim" value="R$ 373,00" readonly>
+                  </span>
+                  <!--<input type="checkbox" name="insa" value="Insa" onClick="calcSalario(this.form)" style="margin-left: 20px;"> --> 
                   </p>
                   <p>
-                  <input type="checkbox" name="alim" value="Alim" onClick="calcSalario(this.form)" checked> Alimentação:
-                  <INPUT TYPE="text" name="txAlim" id="txAlim" value="R$ 373,00" readonly>
-                  <!--<input type="checkbox" name="insa" value="Insa" onClick="calcSalario(this.form)" style="margin-left: 20px;"> --> 
-                  <span style="margin-left: 15px">Adicional de Risco:</span>
+                  <span>Adicional de Risco:</span>
                   <select name="ddInsa" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
                     <option value="0" selected>
                       Nenhum
@@ -538,7 +569,7 @@
                     </option>
                   </select>
                   <!-- Insalubridade: -->
-                  <INPUT TYPE="text" NAME="txInsa" VALUE="0" readonly>
+                  <input type="text" name="txInsa" value="0" readonly>
                   </p>
                   <p>
                   <!-- <input type="checkbox" name="creche" value="0" onClick="calcSalario(this.form)">  -->
@@ -732,7 +763,7 @@
                       </option>
                     </select>
                   </span>
-                  <span style="padding-left: 25px;" onmouseover="nhpup.popup('A Progressão por capacitação profissional varia em 4 níveis e pode ser obtida pela realização de cursos.');">
+                  <span style="padding-left: 50px;" onmouseover="nhpup.popup('A Progressão por capacitação profissional varia em 4 níveis e pode ser obtida pela realização de cursos.');">
                     Nível:
                     <select name="ddProg" id="ddProg" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
                       onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
@@ -750,45 +781,7 @@
                       </option>
                     </select>
                   </span>
-                  <span style="padding-left: 25px;">
-                    FG:
-                    <select name="ddFG" id="ddFG" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
-                      onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
-                      <option value="0" selected>
-                        Não
-                      </option>
-                      <option value="1">
-                        FG-1
-                      </option>
-                      <option value="2">
-                        FG-2
-                      </option>
-                      <option value="3">
-                        FG-3
-                      </option>
-                      <option value="4">
-                        FG-4
-                      </option>
-                      <option value="5">
-                        FG-5
-                      </option>
-                      <option value="6">
-                        FG-6
-                      </option>
-                      <option value="7">
-                        FG-7
-                      </option>
-                      <option value="8">
-                        FG-8
-                      </option>
-                      <option value="9">
-                        FG-9
-                      </option>
-                    </select>
-                  </span>
-                  </p>
-                  <p>
-                  <span onmouseover="nhpup.popup('A Progressão por mérito profissional é relativa ao tempo do servidor no cargo, podendo ser avançada a cada 18 meses.');">
+                  <span style="padding-left: 50px;" onmouseover="nhpup.popup('A Progressão por mérito profissional é relativa ao tempo do servidor no cargo, podendo ser avançada a cada 18 meses.');">
                     Progressão:                                        
                     <select name="ddNivel" id="ddNivel" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
                       <option value="1" selected>
@@ -841,7 +834,74 @@
                       </option>
                     </select>
                   </span>
-                  <span style="padding-left: 25px;">Carga horária:</span>
+                  </p>
+                  <p>
+                  <span>
+                    FG:
+                    <select name="ddFG" id="ddFG" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
+                      onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
+                      <option value="0" selected>
+                        Não
+                      </option>
+                      <option value="1">
+                        FG-1
+                      </option>
+                      <option value="2">
+                        FG-2
+                      </option>
+                      <option value="3">
+                        FG-3
+                      </option>
+                      <option value="4">
+                        FG-4
+                      </option>
+                      <option value="5">
+                        FG-5
+                      </option>
+                      <option value="6">
+                        FG-6
+                      </option>
+                      <option value="7">
+                        FG-7
+                      </option>
+                      <option value="8">
+                        FG-8
+                      </option>
+                      <option value="9">
+                        FG-9
+                      </option>
+                    </select>
+                    <input type="text" NAME="txFG" value="R$ 0,00" readonly>
+                  </span>
+                  <span style="padding-left: 25px;" onmouseover="nhpup.popup('O ocupante de Cargo de Direção pode receber o valor integral como substituto à remuneração ou como adicional, no valor de 60% do valor integral.');">
+                    CD:
+                    <select name="ddCD" id="ddCD" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
+                      onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
+                      <option value="0" selected>
+                        Não
+                      </option>
+                      <option value="1">
+                        CD-1
+                      </option>
+                      <option value="2">
+                        CD-2
+                      </option>
+                      <option value="3">
+                        CD-3
+                      </option>
+                      <option value="4">
+                        CD-4
+                      </option>
+                    </select>
+                    <input type="radio" name="rdCD" value="0.6" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
+                      onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)" checked>60%
+                    <input type="radio" name="rdCD" value="1" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)"
+                      onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">100%
+                  <input type="text" NAME="txCD" value="R$ 0,00" readonly>
+                  </span>
+                  </p>
+                  <p>
+                  <span>Carga horária:</span>
                   <select name="ddCargaH" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
                     <option value="1" selected>
                       40 horas
@@ -1075,14 +1135,16 @@
                   <input type="number" name="gastoTrans" min="2" max="50" step="0.2" value="8"
                     style="width: 50px;" onClick="calcSalario(this.form)" onKeyPress="validateGD1(event, this.form);"
                     onKeyUp="validateGD2(this.form);">
-                  <INPUT TYPE="text" name="txTrans" id="txTrans" value="0" readonly>
+                  <input type="text" style="width:75px;" name="txTrans" id="txTrans" value="0" readonly>
                   </span>
+                  <span style="padding-left: 10px">
+                  <input type="checkbox" name="alim" value="Alim" onClick="calcSalario(this.form)" checked> Alimentação:
+                  <input type="text" style="width:75px;" name="txAlim" id="txAlim" value="R$ 373,00" readonly>
+                  </span>
+                  <!--<input type="checkbox" name="insa" value="Insa" onClick="calcSalario(this.form)" style="margin-left: 20px;"> --> 
                   </p>
                   <p>
-                  <input type="checkbox" name="alim" value="Alim" onClick="calcSalario(this.form)" checked> Alimentação:
-                  <INPUT TYPE="text" name="txAlim" id="txAlim" value="R$ 373,00" readonly>
-                  <!--<input type="checkbox" name="insa" value="Insa" onClick="calcSalario(this.form)" style="margin-left: 20px;"> --> 
-                  <span style="margin-left: 15px">Adicional de Risco:</span>
+                  <span>Adicional de Risco:</span>
                   <select name="ddInsa" onClick="calcSalario(this.form)" onKeyPress="calcSalario(this.form)" onKeyDown="calcSalario(this.form)" onKeyUp="calcSalario(this.form)">
                     <option value="0" selected>
                       Nenhum

@@ -244,6 +244,28 @@ function valorFG(FG, periodo) {
     return valor;
 }
 
+function valorCD(CD, periodo) {
+  //var CD2012 = Array(0, 8889.52, 7431.09, 5833.75, 4236.41)
+  var CD2013 = Array(0, 9575.95, 8004.90, 9284.22, 4563.53);
+  var CD2014 = Array(0, 10315.37, 8623.02, 6769.47, 4915.92);
+  var CD2015 = Array(0, 11111.90, 9288.86, 7292.19, 5295.51);
+  var valor = 0;
+  if(periodo == 1) { //Placeholder para atualizações futuras, não está retroativo
+    // até 2013
+    valor = CD2013[CD]
+  } else if(periodo <= 3) {
+    //até 2014
+    valor = CD2014[CD]
+  } else if(periodo <= 5) {
+    //até 2015
+    valor = CD2015[CD]
+  } else {
+    //a partir de 2016 == 2015
+    valor = CD2015[CD]
+  }
+  return valor;
+}
+
 function calcSalario(form) {
     var periodo = parseInt(form.ddAno.value, 10);
     if(form.medico.checked) {
@@ -289,8 +311,16 @@ function calcSalario(form) {
     var ftvb = parseFloat(form.ddClasse.value) + parseFloat(form.ddNivel
         .value) + parseFloat(form.ddProg.value) - 3;
     var ftcarga = form.ddCargaH.value;
-    var vencimento = Math.floor(base * (Math.pow(ftstep, ftvb)) *
+    
+    if (form.ddCD.value == 0 || form.rdCD[0].checked) {
+      //Se não houver CD ou se for 60%, o vencimento é calculado pela tabela normalmente
+      var vencimento = Math.floor(base * (Math.pow(ftstep, ftvb)) *
         ftcarga * 100) / 100;
+    } else {
+      //Se o CD for 100% então o vencimento é o valor do CD
+      var vencimento = valorCD(form.ddCD.value,periodo);
+    }
+    
     var anuenio = (form.numAnuenio.value / 100) * vencimento
         //var baseurp = Math.round(base * (Math.pow(ftstep, parseFloat(form.ddClasse.value)-1)) * ftcarga * 100) / 100;
         // baseurp no meu contracheque de jan/15 veio sem a progressÃ£o, mas o VB veio com. Se for a regra, usar comentado acima, senÃ£o, apagar baseurp e substituir por vencimento na formula da urp abaixo.
@@ -324,8 +354,9 @@ function calcSalario(form) {
         0;
     var creche = valorCreche(remuneracao, periodo, form.numCreche.value);
     var fungrat = valorFG(parseInt(form.ddFG.value, 10), periodo);
+    var cargodir = (form.rdCD[0].checked) ? valorCD(form.ddCD.value, periodo)*0.6 : 0;
     var bruto = remuneracao + saude + alimentacao + transporte +
-        creche + fungrat;
+        creche + fungrat + cargodir;
     var baseinss = vencimento + urp + qualificacao;
     var tetoinss = 4663.75
     if(periodo >= 6) {
@@ -414,6 +445,8 @@ function calcSalario(form) {
         100);
     form.txFunp.value = formatValor(Math.round(aliqfunp * 100) / 100);
     form.txDepIRRF.value = formatValor(reducaoDepsIRRF);
+    form.txFG.value = formatValor(fungrat);
+    form.txCD.value = (form.rdCD[0].checked) ? formatValor(Math.round(cargodir * 100) / 100) : formatValor(valorCD(form.ddCD.value, periodo));
 }
 
 function inverterform(tipo) {
@@ -433,7 +466,8 @@ function inverterform(tipo) {
             form1.ddFunp.value, form1.numAnuenio.value, form1.funp_ad
             .value, form1.numFunpAlt.value, form1.numDepIRRF.value,
             form1.ddIdadeDep1.value, form1.ddIdadeDep2.value,
-            form1.ddIdadeDep3.value);
+            form1.ddIdadeDep3.value, form1.ddCD.value, form1.rdCD[0].checked, 
+            form1.rdCD[1].checked);
 
         var values2 = Array(form2.ddClasse.value, form2.ddProg.value,
             form2.ddFG.value, form2.ddNivel.value, form2.ddCargaH
@@ -446,7 +480,8 @@ function inverterform(tipo) {
             form2.ddFunp.value, form2.numAnuenio.value, form2.funp_ad
             .value, form2.numFunpAlt.value, form2.numDepIRRF.value,
             form2.ddIdadeDep1.value, form2.ddIdadeDep2.value,
-            form2.ddIdadeDep3.value);
+            form2.ddIdadeDep3.value, form2.ddCD.value, form2.rdCD[0].checked, 
+            form2.rdCD[1].checked);
 
     } else if(tipo == "cima") {
 
@@ -461,7 +496,8 @@ function inverterform(tipo) {
             form2.ddFunp.value, form2.numAnuenio.value, form2.funp_ad
             .value, form2.numFunpAlt.value, form2.numDepIRRF.value,
             form2.ddIdadeDep1.value, form2.ddIdadeDep2.value,
-            form2.ddIdadeDep3.value);
+            form2.ddIdadeDep3.value, form2.ddCD.value, form2.rdCD[0].checked, 
+            form2.rdCD[1].checked);
 
         var values1 = values2;
 
@@ -478,7 +514,8 @@ function inverterform(tipo) {
             form1.ddFunp.value, form1.numAnuenio.value, form1.funp_ad
             .value, form1.numFunpAlt.value, form1.numDepIRRF.value,
             form1.ddIdadeDep1.value, form1.ddIdadeDep2.value,
-            form1.ddIdadeDep3.value);
+            form1.ddIdadeDep3.value, form1.ddCD.value, form1.rdCD[0].checked, 
+            form1.rdCD[1].checked);
 
         var values2 = values1;
     }
@@ -510,6 +547,9 @@ function inverterform(tipo) {
     form1.ddIdadeDep1.value = values2[24]
     form1.ddIdadeDep2.value = values2[25]
     form1.ddIdadeDep3.value = values2[26]
+    form1.ddCD.value = values2[27]
+    form1.rdCD[0].checked = values2[28]
+    form1.rdCD[1].checked= values2[29]
 
 
 
@@ -540,6 +580,9 @@ function inverterform(tipo) {
     form2.ddIdadeDep1.value = values1[24]
     form2.ddIdadeDep2.value = values1[25]
     form2.ddIdadeDep3.value = values1[26]
+    form2.ddCD.value = values1[27]
+    form2.rdCD[0].checked = values1[28]
+    form2.rdCD[1].checked= values1[29]
 
     updateQuali(form1, values2[0])
     updateQuali(form2, values1[0])
