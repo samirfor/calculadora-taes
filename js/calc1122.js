@@ -433,7 +433,7 @@ function calcSalario(form) {
     form.txTrans.value = formatValor(Math.round(transporte * 100) /
         100);
     form.txAlim.value = formatValor(alimentacao);
-    form.txCreche.value = formatValor(creche);
+    form.txCreche.value = formatValor(Math.round(creche * 100) / 100);
     form.txURP.value = formatValor(Math.round(urp * 100) / 100);
     form.txbIRRF.value = formatValor(Math.round(baseirrf * 100) / 100);
     form.txbINSS.value = formatValor(Math.round(baseinss * 100) / 100);
