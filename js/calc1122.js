@@ -161,11 +161,10 @@ function valorFG(FG, periodo) {
     var FG2013 = Array(0, 777.26, 522.90, 423.94, 215.78, 175.09, 128.40, 81.89, 60.57, 49.15);
     var FG2014 = Array(0, 790.75, 531.99, 431.30, 219.54, 187.14, 130.63, 83.31, 61.61 , 50.00);
     var FG2015 = Array(0, 804.49, 541.23, 438.79, 223.35, 181.23, 132.89, 84.75, 62.69, 50.86);
-    var FG2019 = Array(0, 975.51, 656.28, 532.07, 270.83, 219.75, 161.14, 102.76, 76.02, 61.67);
     var valor = 0;
     if (periodo == 1) { valor = FG2013[FG]; }
     else if (periodo <= 2) { valor = FG2014[FG]; }
-    else { valor = FG2019[FG]; }
+    else { valor = FG2015[FG]; }
     return valor;
 }
 function calcSalario (form) {      
