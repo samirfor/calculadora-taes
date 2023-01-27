@@ -1,56 +1,96 @@
-<!--
-To change this template use Tools | Templates.
--->
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+
+<!DOCTYPE HTML>
 <html>
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <title>Sobre a Calculadora</title>
-</head>
-<body>
-    <div id="maindiv">
-        <H1>Calculadora de Salário dos Servidores T-A da UnB</H1>
-        <hr>
-        <div id="header">
-            <div id="header_link">
-                <a id="link_header" href="index.html">Calculadora</a>
+   <head>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-43605146-1"></script>
+      <!-- <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         
+         gtag('config', 'UA-43605146-1');
+      </script> -->
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="css/normalize.css">
+      <link rel="stylesheet" href="css/main.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+      <title>Sobre a Calculadora</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- <script>
+         window.fbAsyncInit = function() {
+           FB.init({
+             appId      : '236772623333172',
+             xfbml      : true,
+             version    : 'v2.5'
+           });
+         };
+         
+         (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/pt_BR/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
+      </script>	 -->
+   </head>
+   <body>
+      <header>
+         <h1>
+            Simulador de Salário dos TAE das IFES
+         </h1>
+         <div id="menu-bar">				
+            <a href="index.html">CALCULADORA</a>
+            <a href="carreira.html">CARREIRA</a>
+            <a class="menu-active" href="sobre.html">SOBRE</a>					
+         </div>
+      </header>
+      <div id="maindiv">
+         <div class="titleHolder">
+            <div class="fb-page">
+               <!--<div class="fb-like" data-href="http://www.facebook.com/SalarioTAE/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false">-->
+               <div class="fb-page" data-href="https://www.facebook.com/SalarioTAE/" data-width="450" data-height="70" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
+                  <blockquote cite="https://www.facebook.com/SalarioTAE/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/SalarioTAE/">Simulador de Salário dos TAE das IFES</a></blockquote>
+               </div>
             </div>
-            <div id="header_link">
-                  <a id="link_header" href="carreira.html">Carreira</a>
+            <div class="mainTitle">
+               <h1>
+                  Sobre
+               </h1>
             </div>
-            <div id="header_link">
-                <a id="link_header" href="sobre.html">Sobre</a>
+            <div class="cbajuda">
             </div>
-        </div>      
-        <h1>Sobre</h1>
-        <hr>
-        <p id="sobre">            
-            Meu nome é Alan e sou Químico da UnB. Resolvi criar esta ferramenta como um passatempo e para facilitar o compartilhamento das contas relacionados ao salário, que eu normalmente fazia utilizando o Excel. Depois de "pronta", resolvi divugar o endereço para, quem sabe, ajudar outros colegas.
-        </p>
-        <p id="sobre">
-            Esta calculadora certamente não contempla todas as possibilidades de contra-cheques dos servidores. Isto porque existem diversos auxílios e gratificações que não sei como calcular, ou sequer conheço.
-            Existe também a possibilidade de que descontos sejam feitos em folha pelos mais diversos motivos. De qualquer forma, estou à disposição para atualizar e adicionar tais itens, se for possível.
-        </p>
-        <p id="sobre">
-            Vale ressaltar, também, que quanto mais itens no contra-cheque, maior a chance de os valores não baterem, já que não é tão simples saber o que influencia nos adicionais de URP, insalubridade, FG, etc, e nos descontos de IR, INSS, sindicato, entre outros.
-        </p>    
-        <p id="sobre">
-            Caso você tenha alguma sugestão, correção ou comentário a fazer sobre a calculadora, por favor me envie um email para <i>alanmol[arroba]unb.br</i>.
-    </div>
-     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            var _gaq=[['_setAccount','UA-43605146-1'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
-      <script id="_wauizv">var _wau = _wau || []; _wau.push(["classic", "jo9044c79opf", "izv"]);
-          (function() {var s=document.createElement("script"); s.async=true;
-          s.src="http://widgets.amung.us/classic.js";
-                       //document.getElementsByTagName("head")[0].appendChild(s);
-          })();
-      </script>
-</body>
+         </div>
+         <div class="main-content">
+            <br>
+            <p class="pcarreira">            
+               Meu nome é Alan e sou Químico da UnB. Resolvi criar esta ferramenta como um passatempo e para facilitar o compartilhamento das contas relacionados ao salário, que eu normalmente fazia utilizando o Excel. Depois de "pronta", resolvi divugar o endereço para, quem sabe, ajudar outros colegas.
+            </p>
+            <p class="pcarreira">
+               Esta calculadora certamente não contempla todas as possibilidades de contra-cheques dos servidores. Isto porque existem diversos auxílios e gratificações que não sei como calcular, ou sequer conheço.
+               Existe também a possibilidade de que descontos sejam feitos em folha pelos mais diversos motivos. De qualquer forma, estou à disposição para atualizar e adicionar tais itens, se for possível.
+            </p>
+            <p class="pcarreira">
+               Vale ressaltar, também, que quanto mais itens no contra-cheque, maior a chance de os valores não baterem, já que não é tão simples saber o que influencia nos adicionais de URP, insalubridade, FG, etc, e nos descontos de IR, INSS, sindicato, entre outros. Para os detalhistas: é quase impossível acertar os centavos finais. Me parece que cada cálculo arredonda o resultado do seu jeito, e investigar cada um deles não vale a pena.
+            </p>
+            <p class="pcarreira">
+               Caso você tenha alguma sugestão, correção ou comentário a fazer sobre a calculadora, por favor entre em contato pela nossa <a href="https://www.facebook.com/SalarioTAE/">página no Facebook</a>. Talvez eu demore um pouco para responder, mas em algum momento verei a sua mensagem.
+            </p>
+            <br>        
+         </div>
+      </div>
+      <div style="flex-grow:1"></div>
+      <footer>
+         <div class="footer-disclaimer">
+            <b>Atenção</b>: Os valores calculados aqui não podem ser considerados 100% corretos devido a possíveis erros nos cálculos e mudanças nas fórmulas e nos valores e alíquotas de impostos e gratificações.
+            <br> Não me responsabilizo por eventuais diferenças entre a simulação e os valores reais. 
+            <br>
+            <br> Desenvolvido por <a href="http://www.alanmol.com.br" target="_blank">Alan Mól</a> - 2013-2021
+         </div>
+      </footer>
+   </body>
 </html>
+
